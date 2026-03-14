@@ -2,9 +2,19 @@
 <html>
 
 <head>
+
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
 <title>Trending Phones</title>
+
 <link rel="stylesheet" href="style.css">
+
+<!-- PWA -->
+
+<link rel="manifest" href="manifest.json">
+
+<meta name="theme-color" content="#1976d2">
+
 </head>
 
 <body>
@@ -50,6 +60,18 @@
 <div id="scroll" class="scroll-container"></div>
 
 <script src="app.js"></script>
+
+<!-- SERVICE WORKER -->
+
+<script>
+
+if ("serviceWorker" in navigator) {
+
+navigator.serviceWorker.register("/service-worker.js")
+
+}
+
+</script>
 
 </body>
 </html>
