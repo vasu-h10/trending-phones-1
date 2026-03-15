@@ -17,6 +17,11 @@
 <link rel="icon" href="icon-192.png">
 <link rel="apple-touch-icon" href="icon-192.png">
 
+<!-- GOOGLE ADSENSE SCRIPT -->
+<script async
+src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXX"
+crossorigin="anonymous"></script>
+
 </head>
 
 <body>
@@ -25,31 +30,29 @@
 🔥 Trending Phones Today
 </header>
 
-<!-- APP BANNER -->
+
+<!-- TOP BANNER -->
 
 <div class="app-banner">
 <img src="banner.jpg" alt="Trending Phones Banner">
 </div>
 
 
-<!-- VIDEO AD BANNERS -->
+<!-- GOOGLE ADS BANNER -->
 
-<div class="ad-scroll">
+<div class="google-ad">
 
-<video autoplay muted loop playsinline
-onclick="window.open('https://www.amazon.in','_blank')">
-<source src="amazon-ad.mp4" type="video/mp4">
-</video>
+<ins class="adsbygoogle"
+style="display:block"
+data-ad-client="ca-pub-XXXXXXXXXXXX"
+data-ad-slot="1234567890"
+data-ad-format="auto"
+data-full-width-responsive="true">
+</ins>
 
-<video autoplay muted loop playsinline
-onclick="window.open('https://www.flipkart.com','_blank')">
-<source src="flipkart-ad.mp4" type="video/mp4">
-</video>
-
-<video autoplay muted loop playsinline
-onclick="window.open('https://www.amazon.in','_blank')">
-<source src="mobile-sale.mp4" type="video/mp4">
-</video>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 </div>
 
@@ -60,17 +63,20 @@ onclick="window.open('https://www.amazon.in','_blank')">
 <input id="search" placeholder="Search phone..." oninput="searchPhones()">
 </div>
 
+
 <h3 style="padding-left:10px">🔥 Trending Searches</h3>
 
 <div id="trending"></div>
 
+
 <div id="scroll" class="scroll-container"></div>
+
 
 <script src="app.js"></script>
 
 <script>
 if ("serviceWorker" in navigator) {
-  navigator.serviceWorker.register("/service-worker.js");
+navigator.serviceWorker.register("/service-worker.js");
 }
 </script>
 
