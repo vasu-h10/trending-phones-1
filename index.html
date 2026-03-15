@@ -14,7 +14,6 @@
 
 <meta name="theme-color" content="#1976d2">
 
-<!-- App Icons -->
 <link rel="icon" href="icon-192.png">
 <link rel="apple-touch-icon" href="icon-192.png">
 
@@ -26,13 +25,9 @@
 🔥 Trending Phones Today
 </header>
 
-<!-- APP BANNER -->
-
 <div class="app-banner">
 <img src="banner.jpg" alt="Trending Phones Banner">
 </div>
-
-<!-- HORIZONTAL ADS -->
 
 <div class="ad-scroll">
 
@@ -50,8 +45,6 @@
 
 </div>
 
-<!-- SEARCH -->
-
 <div class="search-box">
 <input id="search" placeholder="Search phone..." oninput="searchPhones()">
 </div>
@@ -64,11 +57,9 @@
 
 <script src="app.js"></script>
 
-<!-- SERVICE WORKER -->
-
 <script>
 if ("serviceWorker" in navigator) {
-  navigator.serviceWorker.register("service-worker.js");
+  navigator.serviceWorker.register("/service-worker.js");
 }
 </script>
 
