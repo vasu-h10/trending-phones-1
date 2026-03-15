@@ -45,10 +45,11 @@ flex:0 0 auto;
 }
 
 .ad-scroll video{
-height:120px;
+height:110px;
+width:260px;
 border-radius:12px;
-box-shadow:0 3px 10px rgba(0,0,0,0.25);
 object-fit:cover;
+box-shadow:0 3px 10px rgba(0,0,0,0.25);
 }
 
 /* SEARCH */
