@@ -4,15 +4,6 @@ margin:0;
 background:#f2f2f2;
 }
 
-header{
-background:#1976d2;
-color:white;
-padding:16px;
-text-align:center;
-font-size:20px;
-font-weight:bold;
-}
-
 /* APP BANNER */
 
 .app-banner{
@@ -22,6 +13,7 @@ background:#f2f2f2;
 display:flex;
 justify-content:center;
 margin-bottom:10px;
+position:relative;
 }
 
 .app-banner img{
@@ -29,6 +21,29 @@ width:100%;
 max-width:100%;
 border-radius:12px;
 box-shadow:0 3px 10px rgba(0,0,0,0.2);
+}
+
+/* BANNER TITLE */
+
+.banner-title{
+position:absolute;
+left:30px;
+top:50%;
+transform:translateY(-50%);
+font-size:42px;
+font-family:'Great Vibes', cursive;
+color:white;
+text-shadow:
+0 0 10px white,
+0 0 20px white,
+0 0 30px #00bfff,
+0 0 50px #00bfff;
+animation:blinkGlow 2s infinite alternate;
+}
+
+@keyframes blinkGlow{
+from{opacity:0.7}
+to{opacity:1}
 }
 
 /* GOOGLE ADS BANNER */
