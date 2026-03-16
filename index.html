@@ -1,11 +1,120 @@
-<!DOCTYPE html><html><head><meta name="viewport" content="width=device-width, initial-scale=1"><title>Trending Phones</title><link rel="stylesheet" href="style.css"><link rel="manifest" href="manifest.json"><meta name="theme-color" content="#1976d2"><link rel="icon" href="icon-192.png">
-<link rel="apple-touch-icon" href="icon-192.png"><!-- Google AdSense --><script async
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Trending Phones</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link rel="manifest" href="manifest.json">
+
+<meta name="theme-color" content="#1976d2">
+
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+
+<!-- Google Font (marketing script style) -->
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+
+<!-- Google AdSense -->
+<script async
 src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2594728028551012"
-crossorigin="anonymous"></script></head><body><header>
+crossorigin="anonymous"></script>
+
+<style>
+
+/* Banner container */
+
+.app-banner{
+position:relative;
+width:100%;
+overflow:hidden;
+}
+
+/* Banner image */
+
+.app-banner img{
+width:100%;
+height:170px;
+object-fit:cover;
+border-radius:12px;
+}
+
+/* Banner title */
+
+.banner-title{
+
+position:absolute;
+
+left:40px;
+top:50%;
+
+transform:translateY(-50%);
+
+font-size:42px;
+
+font-family:'Great Vibes', cursive;
+
+color:white;
+
+/* glow highlight */
+
+text-shadow:
+0 0 10px white,
+0 0 20px white,
+0 0 30px #00bfff,
+0 0 50px #00bfff;
+
+/* blinking animation */
+
+animation:blinkGlow 2s infinite alternate;
+
+}
+
+/* blinking effect */
+
+@keyframes blinkGlow{
+
+from{
+opacity:0.7;
+}
+
+to{
+opacity:1;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
 🔥 Trending Phones Today
-</header><!-- Top Banner --><div class="app-banner">
-<img src="banner.jpg" alt="Trending Phones Banner">
-</div><!-- Google Ad Banner --><div style="margin:20px; text-align:center;"><ins class="adsbygoogle"
+</header>
+
+<!-- Top Banner -->
+
+<div class="app-banner">
+
+<img src="Screenshot_2026-03-16-08-32-00-894_com.miui.gallery-edit.jpg" alt="Trending Phones Banner">
+
+<div class="banner-title">
+Trending Phones
+</div>
+
+</div>
+
+<!-- Google Ad Banner -->
+
+<div style="margin:20px; text-align:center;">
+
+<ins class="adsbygoogle"
 style="display:block"
 data-ad-client="ca-pub-2594728028551012"
 data-ad-slot="1234567890"
@@ -15,14 +124,37 @@ data-full-width-responsive="true">
 
 <script>
 (adsbygoogle = window.adsbygoogle || []).push({});
-</script></div><!-- Search Box --><div class="search-box">
+</script>
+
+</div>
+
+<!-- Search Box -->
+
+<div class="search-box">
 <input id="search" placeholder="Search phone..." oninput="searchPhones()">
-</div><h3 style="padding-left:10px">
+</div>
+
+<h3 style="padding-left:10px">
 🔥 Trending Searches
-</h3><div id="trending"></div><div id="scroll" class="scroll-container"></div><script src="app.js"></script><script>
+</h3>
+
+<div id="trending"></div>
+
+<div id="scroll" class="scroll-container"></div>
+
+<script src="app.js"></script>
+
+<script>
 if ("serviceWorker" in navigator) {
 navigator.serviceWorker.register("/service-worker.js");
 }
-</script><!-- Footer --><footer style="text-align:center; margin:30px 0; font-size:14px;">
+</script>
+
+<!-- Footer -->
+
+<footer style="text-align:center; margin:30px 0; font-size:14px;">
 <a href="privacy.html">Privacy Policy</a>
-</footer></body></html>
+</footer>
+
+</body>
+</html>
