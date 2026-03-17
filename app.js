@@ -46,6 +46,13 @@ badge=`
 `
 }
 
+/* ✅ REAL SPECS */
+
+const battery = phone.battery || "5000mAh"
+const camera = phone.camera || "64MP"
+const processor = phone.processor || "Snapdragon"
+const display = phone.display || "6.5 inch"
+
 /* CARD CONTENT */
 
 card.innerHTML=`
@@ -54,6 +61,27 @@ ${badge}
 <div class="phone-title">${phone.name}</div>
 
 <img class="main-img" src="${phone.image}" loading="lazy">
+
+<!-- 🔥 SPEC INFO -->
+<div class="spec-scroll">
+
+  <div class="spec-item">
+    <p>🔋 ${battery}</p>
+  </div>
+
+  <div class="spec-item">
+    <p>📷 ${camera}</p>
+  </div>
+
+  <div class="spec-item">
+    <p>⚡ ${processor}</p>
+  </div>
+
+  <div class="spec-item">
+    <p>📱 ${display}</p>
+  </div>
+
+</div>
 
 <div class="buy-buttons">
 
