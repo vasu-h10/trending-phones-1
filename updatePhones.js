@@ -6,7 +6,7 @@ const headers = {
   headers: { "User-Agent": "Mozilla/5.0" }
 }
 
-/* 🔥 GET SPECS FROM PHONE PAGE */
+/* 🔥 GET REAL SPECS FROM PHONE PAGE */
 
 async function getSpecs(url){
   try{
@@ -21,25 +21,25 @@ async function getSpecs(url){
       display: "Unknown"
     }
 
-    $(".specs-list tr").each((i, el)=>{
+    $(".specs-table tr").each((i, el)=>{
 
-      const label = $(el).find("td").first().text().trim()
-      const value = $(el).find("td").last().text().trim()
+      const key = $(el).find("td.ttl").text().trim().toLowerCase()
+      const val = $(el).find("td.nfo").text().trim()
 
-      if(label.includes("Battery")){
-        specs.battery = value
+      if(key.includes("battery")){
+        specs.battery = val
       }
 
-      if(label.includes("Camera")){
-        specs.camera = value
+      if(key.includes("camera")){
+        specs.camera = val
       }
 
-      if(label.includes("Chipset")){
-        specs.processor = value
+      if(key.includes("chipset")){
+        specs.processor = val
       }
 
-      if(label.includes("Display")){
-        specs.display = value
+      if(key.includes("display")){
+        specs.display = val
       }
 
     })
@@ -47,6 +47,7 @@ async function getSpecs(url){
     return specs
 
   }catch(err){
+    console.log("❌ Specs error:", url)
     return {
       battery: "Unknown",
       camera: "Unknown",
@@ -56,7 +57,8 @@ async function getSpecs(url){
   }
 }
 
-/* 🔥 SCRAPE PHONE LIST + SPECS */
+
+/* 🔥 SCRAPE PHONE LIST */
 
 async function scrapePhones(pageUrl){
 
@@ -72,7 +74,8 @@ async function scrapePhones(pageUrl){
     const el = items[i]
 
     const name = $(el).find("span").text().trim()
-    const image = $(el).find("img").attr("src")
+    const imgSrc = $(el).find("img").attr("src")
+    const image = "https://www.gsmarena.com/" + imgSrc
 
     const link = $(el).find("a").attr("href")
     const phoneUrl = "https://www.gsmarena.com/" + link
@@ -91,14 +94,15 @@ async function scrapePhones(pageUrl){
       display: specs.display
     })
 
-    /* ⚠️ DELAY PER PHONE */
-    await new Promise(r => setTimeout(r, 1500))
+    /* ⚠️ DELAY PER PHONE (avoid blocking) */
+    await new Promise(r => setTimeout(r, 1200))
   }
 
   let next = $("a.pages-next").attr("href")
 
   return { phones, next }
 }
+
 
 /* 🔥 MAIN FUNCTION */
 
@@ -117,6 +121,9 @@ async function updatePhones(){
       const link = $(el).attr("href")
       brands.push("https://www.gsmarena.com/" + link)
     })
+
+    /* ⚡ TEST MODE (remove later) */
+    // brands = brands.slice(0, 2)
 
     let allPhones = []
 
