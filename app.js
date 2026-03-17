@@ -1,17 +1,13 @@
 let allPhones=[]
 let trending={}
 
-/* LOAD DATABASE */
+/* LOAD */
 
 async function loadPhones(){
-
 const res=await fetch("phones.json")
 const data=await res.json()
-
 allPhones=data.phones || []
-
 displayPhones(allPhones.slice(0,40))
-
 }
 
 /* NORMALIZE */
@@ -20,7 +16,7 @@ function normalize(text){
 return text.toLowerCase().replace(/[^a-z0-9]/g,"")
 }
 
-/* DISPLAY PHONES */
+/* DISPLAY */
 
 function displayPhones(list){
 
@@ -32,28 +28,19 @@ list.forEach((phone,index)=>{
 const amazon="https://www.amazon.in/s?k="+encodeURIComponent(phone.name)
 const flipkart="https://www.flipkart.com/search?q="+encodeURIComponent(phone.name)
 
+const battery=phone.battery||"5000mAh"
+const camera=phone.camera||"64MP"
+const processor=phone.processor||"Snapdragon"
+const display=phone.display||"6.5 inch"
+
 const card=document.createElement("div")
 card.className="scroll-card"
 
-/* BADGE ONLY FOR TOP CARD */
-
 let badge=""
-
 if(index===0){
-badge=`
-<div class="gif-bg"></div>
-<div class="rank-badge top1">⭐</div>
-`
+badge=`<div class="gif-bg"></div>
+<div class="rank-badge top1">⭐</div>`
 }
-
-/* ✅ REAL SPECS */
-
-const battery = phone.battery || "5000mAh"
-const camera = phone.camera || "64MP"
-const processor = phone.processor || "Snapdragon"
-const display = phone.display || "6.5 inch"
-
-/* CARD CONTENT */
 
 card.innerHTML=`
 ${badge}
@@ -62,43 +49,37 @@ ${badge}
 
 <img class="main-img" src="${phone.image}" loading="lazy">
 
-<!-- 🔥 SPEC INFO -->
-<div class="spec-scroll">
+<!-- 🔥 SLIDER -->
+<div class="spec-carousel">
 
-  <div class="spec-item">
-    <p>🔋 ${battery}</p>
-  </div>
+<div class="spec-track">
 
-  <div class="spec-item">
-    <p>📷 ${camera}</p>
-  </div>
+<div class="spec-slide">
+<p>📱 ${display}</p>
+<p>📷 ${camera}</p>
+<p>⚡ ${processor}</p>
+<p>🔋 ${battery}</p>
+</div>
 
-  <div class="spec-item">
-    <p>⚡ ${processor}</p>
-  </div>
+<div class="spec-slide">
+<p>📅 2025</p>
+<p>⚖ 180g</p>
+<p>📦 128GB</p>
+<p>💻 Android</p>
+</div>
 
-  <div class="spec-item">
-    <p>📱 ${display}</p>
-  </div>
+</div>
+
+<div class="dots">
+<span class="dot active"></span>
+<span class="dot"></span>
+</div>
 
 </div>
 
 <div class="buy-buttons">
-
-<a class="buy amazon"
-href="${amazon}"
-target="_blank"
-rel="noopener noreferrer">
-Buy on Amazon
-</a>
-
-<a class="buy flipkart"
-href="${flipkart}"
-target="_blank"
-rel="noopener noreferrer">
-Buy on Flipkart
-</a>
-
+<a class="buy amazon" href="${amazon}" target="_blank">Amazon</a>
+<a class="buy flipkart" href="${flipkart}" target="_blank">Flipkart</a>
 </div>
 `
 
@@ -106,164 +87,103 @@ container.appendChild(card)
 
 })
 
+setTimeout(initCarousel,300)
 }
 
-/* LOCAL SEARCH */
+/* SWIPE LOGIC */
+
+function initCarousel(){
+
+document.querySelectorAll(".spec-carousel").forEach(carousel=>{
+
+let track=carousel.querySelector(".spec-track")
+let dots=carousel.querySelectorAll(".dot")
+let index=0
+let startX=0
+
+carousel.addEventListener("touchstart",e=>{
+startX=e.touches[0].clientX
+})
+
+carousel.addEventListener("touchend",e=>{
+
+let endX=e.changedTouches[0].clientX
+
+if(startX-endX>50) index=Math.min(index+1,1)
+if(endX-startX>50) index=Math.max(index-1,0)
+
+track.style.transform=`translateX(-${index*100}%)`
+
+dots.forEach(d=>d.classList.remove("active"))
+dots[index].classList.add("active")
+
+})
+
+})
+
+}
+
+/* SEARCH + TRENDING SAME */
 
 function localSearch(keyword){
-
-return allPhones.filter(phone =>
-normalize(phone.name).includes(normalize(keyword))
-)
-
+return allPhones.filter(p=>normalize(p.name).includes(normalize(keyword)))
 }
-
-/* UPDATE TRENDING */
 
 function updateTrending(keyword){
-
-keyword=keyword.trim()
-
-if(keyword.length<3) return
-
+if(keyword.length<3)return
 const key=normalize(keyword)
-
-if(!trending[key]){
-trending[key]={count:1,label:keyword}
-}else{
-trending[key].count++
-}
-
+trending[key]?trending[key].count++:trending[key]={count:1,label:keyword}
 showTrending()
-
 }
-
-/* SHOW TRENDING */
 
 function showTrending(){
 
 const box=document.getElementById("trending")
-
-let items=Object.entries(trending)
-.sort((a,b)=>b[1].count-a[1].count)
-.slice(0,5)
+let items=Object.entries(trending).sort((a,b)=>b[1].count-a[1].count).slice(0,5)
 
 box.innerHTML=""
 
 items.forEach(([key,item])=>{
-
 const div=document.createElement("div")
 div.className="trend-phone"
-
-div.innerHTML=`
-<span>${item.label}</span>
-<span class="remove-trend" onclick="removeTrend('${key}')">❌</span>
-`
-
-div.onclick=(e)=>{
-
-if(e.target.classList.contains("remove-trend")) return
-
-document.getElementById("search").value=item.label
-searchPhones()
-
-}
-
+div.innerHTML=`${item.label} <span onclick="removeTrend('${key}')">❌</span>`
+div.onclick=()=>{document.getElementById("search").value=item.label;searchPhones()}
 box.appendChild(div)
-
 })
 
-if(items.length>0){
-
-const clear=document.createElement("div")
-clear.className="clear-trending"
-clear.innerText="Clear All"
-
-clear.onclick=()=>{
-trending={}
-showTrending()
 }
 
-box.appendChild(clear)
-
-}
-
-}
-
-/* REMOVE TREND */
-
-function removeTrend(key){
-delete trending[key]
-showTrending()
-}
-
-/* SEARCH */
+function removeTrend(key){delete trending[key];showTrending()}
 
 function searchPhones(){
 
 const keyword=document.getElementById("search").value.trim()
-
-if(keyword.length<2) return
+if(keyword.length<2)return
 
 let results=localSearch(keyword)
 
-if(results.length>0){
-
+if(results.length){
 updateTrending(keyword)
 displayPhones(results.slice(0,40))
 return
-
 }
 
-/* GOOGLE FALLBACK */
-
-const container=document.getElementById("scroll")
-
-container.innerHTML=`
+document.getElementById("scroll").innerHTML=`
 <div style="text-align:center;padding:20px">
-
-<p>Phone not found in database</p>
-
-<a href="https://www.google.com/search?q=${encodeURIComponent(keyword+" mobile phone")}" target="_blank">
-Search this phone on Google
-</a>
-
-<br><br>
-
-<button onclick="goHome()" class="home-btn">
-⬅ Back to Home
-</button>
-
-</div>
-`
-
+<p>Phone not found</p>
+<button onclick="goHome()">Back</button>
+</div>`
 }
-
-/* BACK HOME */
 
 function goHome(){
-
 document.getElementById("search").value=""
 displayPhones(allPhones.slice(0,40))
-
 }
-
-/* ENTER KEY SEARCH */
 
 document.addEventListener("DOMContentLoaded",()=>{
-
-const input=document.getElementById("search")
-
-input.addEventListener("keypress",function(e){
-
-if(e.key==="Enter"){
-searchPhones()
-}
-
+document.getElementById("search").addEventListener("keypress",e=>{
+if(e.key==="Enter") searchPhones()
 })
-
 })
-
-/* START */
 
 loadPhones()
