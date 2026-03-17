@@ -294,35 +294,32 @@ body{
   color:#777;
 }
 
-/* 🔥 RESPONSIVE BREAKPOINTS */
+/* 🔥 RESPONSIVE */
 
 /* TABLET */
 @media(min-width:600px){
-
   .scroll-card{
     max-width:500px;
     margin:auto;
   }
-
 }
 
-/* DESKTOP */
+/* 💻 DESKTOP (FIXED PROPERLY) */
 @media(min-width:900px){
 
   .scroll-container{
-    flex-direction:row;
-    flex-wrap:wrap;
-    justify-content:center;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
   }
 
-  .scroll-card{
-    width:45%;
+  .top-card{
+    grid-column:1 / -1; /* FULL WIDTH */
   }
 
 }
 
-
-/* 🔥 TOP TRENDING BIG CARD */
+/* 🔥 TOP TRENDING CARD */
 
 .top-card{
   transform:scale(1.05);
