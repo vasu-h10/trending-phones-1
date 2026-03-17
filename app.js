@@ -1,11 +1,17 @@
 let allPhones = []
-let trending = {}
+let trending = JSON.parse(localStorage.getItem("trending")) || {}
 
 /* LOAD */
 async function loadPhones(){
   const res = await fetch("phones.json")
   const data = await res.json()
-  allPhones = data.phones || []
+
+  // 🔥 add score
+  allPhones = (data.phones || []).map((p,i)=>({
+    ...p,
+    score: 50 - i
+  }))
+
   displayPhones(allPhones.slice(0,40))
 }
 
@@ -20,6 +26,9 @@ function displayPhones(list){
   const container = document.getElementById("scroll")
   container.innerHTML = ""
 
+  // 🔥 SORT BY SCORE (MAIN FIX)
+  list.sort((a,b)=>(b.score||0)-(a.score||0))
+
   list.forEach((phone,index)=>{
 
     const isTop = index === 0
@@ -27,13 +36,18 @@ function displayPhones(list){
     const amazon = "https://www.amazon.in/s?k="+encodeURIComponent(phone.name)
     const flipkart = "https://www.flipkart.com/search?q="+encodeURIComponent(phone.name)
 
-    const battery = phone.battery && phone.battery !== "Unknown" ? phone.battery : "5000mAh"
-    const camera = phone.camera && phone.camera !== "Unknown" ? phone.camera : "64MP"
+    const battery = phone.battery || "5000mAh"
+    const camera = phone.camera || "64MP"
     const processor = phone.processor || "Snapdragon"
-    const display = phone.display && phone.display !== "Unknown" ? phone.display : "6.5 inch"
+    const display = phone.display || "6.5 inch"
 
     const card = document.createElement("div")
     card.className = isTop ? "scroll-card top-card" : "scroll-card"
+
+    // 🔥 CLICK BOOST
+    card.onclick = ()=>{
+      phone.score = (phone.score || 0) + 10
+    }
 
     let badge=""
     if(isTop){
@@ -109,7 +123,6 @@ function initCarousel(){
       dots.forEach(d=>d.classList.remove("active"))
       dots[index].classList.add("active")
     })
-
   })
 }
 
@@ -118,16 +131,33 @@ function localSearch(keyword){
   return allPhones.filter(p=>normalize(p.name).includes(normalize(keyword)))
 }
 
+/* TRENDING UPDATE */
 function updateTrending(keyword){
-  if(keyword.length<3)return
-  const key=normalize(keyword)
-  trending[key]?trending[key].count++:trending[key]={count:1,label:keyword}
+
+  if(keyword.length < 2) return
+
+  const key = normalize(keyword)
+
+  trending[key]
+    ? trending[key].count++
+    : trending[key] = {count:1,label:keyword}
+
+  // 🔥 increase score
+  allPhones.forEach(phone=>{
+    if(normalize(phone.name).includes(key)){
+      phone.score = (phone.score || 0) + 5
+    }
+  })
+
+  localStorage.setItem("trending", JSON.stringify(trending))
   showTrending()
 }
 
+/* SHOW TRENDING */
 function showTrending(){
 
   const box=document.getElementById("trending")
+
   let items=Object.entries(trending)
     .sort((a,b)=>b[1].count-a[1].count)
     .slice(0,5)
@@ -138,11 +168,15 @@ function showTrending(){
     const div=document.createElement("div")
     div.className="trend-phone"
     div.innerHTML=`${item.label} ❌`
-    div.onclick=()=>{document.getElementById("search").value=item.label;searchPhones()}
+    div.onclick=()=>{
+      document.getElementById("search").value=item.label
+      searchPhones()
+    }
     box.appendChild(div)
   })
 }
 
+/* SEARCH */
 function searchPhones(){
 
   const keyword=document.getElementById("search").value.trim()
