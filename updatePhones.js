@@ -10,7 +10,6 @@ const headers = {
 
 async function getSpecs(url){
   try{
-
     const res = await axios.get(url, headers)
     const $ = cheerio.load(res.data)
 
@@ -21,28 +20,33 @@ async function getSpecs(url){
       display: "Unknown"
     }
 
-    /* ✅ USE FLEXIBLE SELECTOR */
-    $("tr").each((i, el)=>{
+    /* ✅ FLEXIBLE EXTRACTION (WORKS FOR MOST DEVICES) */
+    $("table tr").each((i, el)=>{
 
       const key = $(el).find("td.ttl").text().trim().toLowerCase()
       const val = $(el).find("td.nfo").text().trim()
+      const rowText = $(el).text().toLowerCase()
 
-      if(!key || !val) return
+      if(!key && !rowText) return
 
-      if(key.includes("battery")){
-        specs.battery = val
+      // BATTERY
+      if((key.includes("battery") || rowText.includes("battery")) && specs.battery === "Unknown"){
+        specs.battery = val || rowText
       }
 
-      if(key.includes("camera")){
-        specs.camera = val
+      // CAMERA
+      if((key.includes("camera") || rowText.includes("camera")) && specs.camera === "Unknown"){
+        specs.camera = val || rowText
       }
 
-      if(key.includes("chipset")){
-        specs.processor = val
+      // PROCESSOR
+      if((key.includes("chipset") || rowText.includes("chipset")) && specs.processor === "Unknown"){
+        specs.processor = val || rowText
       }
 
-      if(key.includes("display") || key.includes("size")){
-        specs.display = val
+      // DISPLAY
+      if((key.includes("display") || key.includes("size") || rowText.includes("display")) && specs.display === "Unknown"){
+        specs.display = val || rowText
       }
 
     })
@@ -79,7 +83,7 @@ async function scrapePhones(pageUrl){
     const name = $(el).find("span").text().trim()
     const imgSrc = $(el).find("img").attr("src")
 
-    const image = imgSrc.startsWith("http")
+    const image = imgSrc?.startsWith("http")
       ? imgSrc
       : "https://www.gsmarena.com/" + imgSrc
 
@@ -99,7 +103,8 @@ async function scrapePhones(pageUrl){
       display: specs.display
     })
 
-    await new Promise(r => setTimeout(r, 1000))
+    /* ⚠️ SAFE DELAY */
+    await new Promise(r => setTimeout(r, 800))
   }
 
   let next = $("a.pages-next").attr("href")
@@ -126,7 +131,7 @@ async function updatePhones(){
       brands.push("https://www.gsmarena.com/" + link)
     })
 
-    /* ⚡ FAST TEST (REMOVE LATER) */
+    /* ⚡ TEST MODE (UNCOMMENT FIRST TIME) */
     // brands = brands.slice(0, 2)
 
     let allPhones = []
@@ -149,7 +154,7 @@ async function updatePhones(){
           page = null
         }
 
-        await new Promise(r => setTimeout(r, 1500))
+        await new Promise(r => setTimeout(r, 1200))
       }
 
     }
