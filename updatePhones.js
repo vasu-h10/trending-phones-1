@@ -2,15 +2,26 @@ const axios = require("axios")
 const cheerio = require("cheerio")
 const fs = require("fs")
 
+/* ✅ FIXED HEADERS (IMPORTANT) */
 const headers = {
-  headers: { "User-Agent": "Mozilla/5.0" }
+  headers: {
+    "User-Agent":
+      "Mozilla/5.0 (Linux; Android 10; Mobile) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Mobile Safari/537.36",
+    "Accept-Language": "en-US,en;q=0.9",
+    "Referer": "https://www.google.com/"
+  }
 }
 
 /* 🔥 GET REAL SPECS FROM PHONE PAGE */
 
 async function getSpecs(url){
   try{
-    const res = await axios.get(url, headers)
+
+    const res = await axios.get(url, {
+      ...headers,
+      timeout: 10000
+    })
+
     const $ = cheerio.load(res.data)
 
     let specs = {
@@ -20,7 +31,7 @@ async function getSpecs(url){
       display: "Unknown"
     }
 
-    /* ✅ FLEXIBLE EXTRACTION (WORKS FOR MOST DEVICES) */
+    /* ✅ FLEXIBLE EXTRACTION */
     $("table tr").each((i, el)=>{
 
       const key = $(el).find("td.ttl").text().trim().toLowerCase()
@@ -131,7 +142,7 @@ async function updatePhones(){
       brands.push("https://www.gsmarena.com/" + link)
     })
 
-    /* ⚡ TEST MODE (UNCOMMENT FIRST TIME) */
+    /* ⚡ TEST MODE (use this first to check) */
     // brands = brands.slice(0, 2)
 
     let allPhones = []
