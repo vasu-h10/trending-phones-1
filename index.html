@@ -4,11 +4,9 @@
 <head>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
 <title>Trending Phones</title>
 
 <link rel="stylesheet" href="style.css">
-
 <link rel="manifest" href="manifest.json">
 
 <meta name="theme-color" content="#1976d2">
@@ -48,13 +46,11 @@ transform:translateY(-50%);
 font-size:42px;
 font-family:'Great Vibes', cursive;
 color:white;
-
 text-shadow:
 0 0 10px white,
 0 0 20px white,
 0 0 30px #00bfff,
 0 0 50px #00bfff;
-
 animation:blinkGlow 2s infinite alternate;
 }
 
@@ -63,8 +59,18 @@ from{opacity:0.7;}
 to{opacity:1;}
 }
 
-/* FOOTER */
+/* GOOGLE AD */
+.google-ad{
+margin:20px;
+padding:10px;
+background:white;
+border-radius:12px;
+box-shadow:0 3px 10px rgba(0,0,0,0.15);
+text-align:center;
+min-height:90px;
+}
 
+/* FOOTER */
 .app-footer{
 background:#ffffff;
 margin-top:30px;
@@ -85,11 +91,6 @@ margin-bottom:10px;
 text-decoration:none;
 color:#1976d2;
 font-size:14px;
-font-weight:500;
-}
-
-.footer-links a:hover{
-text-decoration:underline;
 }
 
 .footer-copy{
@@ -105,12 +106,17 @@ color:#777;
 
 <!-- Banner -->
 <div class="app-banner">
-<img src="Screenshot_2026-03-16-08-32-00-894_com.miui.gallery-edit.jpg">
+<img src="banner.jpg">
 <div class="banner-title">Trending Phones</div>
 </div>
 
-<!-- Ads -->
-<div style="margin:20px; text-align:center;">
+<!-- Description (IMPORTANT for AdSense) -->
+<p style="padding:10px; font-size:14px;">
+Discover trending smartphones, latest mobile launches, and compare top phones from brands like Xiaomi, Samsung, Vivo, Oppo and more.
+</p>
+
+<!-- Google Ad -->
+<div class="google-ad">
 <ins class="adsbygoogle"
 style="display:block"
 data-ad-client="ca-pub-2594728028551012"
@@ -118,6 +124,7 @@ data-ad-slot="1234567890"
 data-ad-format="auto"
 data-full-width-responsive="true">
 </ins>
+
 <script>
 (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
@@ -146,13 +153,13 @@ navigator.serviceWorker.register("/service-worker.js");
 
 <div class="footer-links">
 <a href="privacy.html">Privacy Policy</a>
-<a href="terms.html">Terms & Conditions</a>
+<a href="terms.html">Terms</a>
 <a href="about.html">About</a>
 <a href="contact.html">Contact</a>
 </div>
 
 <p class="footer-copy">
-© 2026 Trending Phones. All rights reserved.
+© 2026 Trending Phones
 </p>
 
 </footer>
