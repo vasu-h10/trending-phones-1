@@ -320,3 +320,35 @@ body{
   }
 
 }
+
+
+/* 🔥 TOP TRENDING BIG CARD */
+
+.top-card{
+  transform:scale(1.05);
+  border:2px solid gold;
+  box-shadow:0 10px 30px rgba(255,215,0,0.4);
+}
+
+.top-card .main-img{
+  width:80%;
+  max-width:260px;
+}
+
+.top-card .phone-title{
+  font-size:20px;
+}
+
+.top-card::before{
+  content:"🔥 TOP TRENDING";
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  background:linear-gradient(90deg,#ff9800,#ffc107);
+  color:white;
+  font-size:12px;
+  padding:5px;
+  text-align:center;
+  z-index:5;
+}
