@@ -16,7 +16,7 @@
 <link rel="icon" href="icon-192.png">
 <link rel="apple-touch-icon" href="icon-192.png">
 
-<!-- Google Font (marketing script style) -->
+<!-- Google Font -->
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
 
 <!-- Google AdSense -->
@@ -26,15 +26,12 @@ crossorigin="anonymous"></script>
 
 <style>
 
-/* Banner container */
-
+/* Banner */
 .app-banner{
 position:relative;
 width:100%;
 overflow:hidden;
 }
-
-/* Banner image */
 
 .app-banner img{
 width:100%;
@@ -43,23 +40,14 @@ object-fit:cover;
 border-radius:12px;
 }
 
-/* Banner title */
-
 .banner-title{
-
 position:absolute;
 left:40px;
 top:50%;
-
 transform:translateY(-50%);
-
 font-size:42px;
-
 font-family:'Great Vibes', cursive;
-
 color:white;
-
-/* glow highlight */
 
 text-shadow:
 0 0 10px white,
@@ -67,24 +55,46 @@ text-shadow:
 0 0 30px #00bfff,
 0 0 50px #00bfff;
 
-/* blinking animation */
-
 animation:blinkGlow 2s infinite alternate;
-
 }
-
-/* blinking effect */
 
 @keyframes blinkGlow{
-
-from{
-opacity:0.7;
+from{opacity:0.7;}
+to{opacity:1;}
 }
 
-to{
-opacity:1;
+/* FOOTER */
+
+.app-footer{
+background:#ffffff;
+margin-top:30px;
+padding:20px;
+text-align:center;
+border-top:1px solid #ddd;
 }
 
+.footer-links{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:15px;
+margin-bottom:10px;
+}
+
+.footer-links a{
+text-decoration:none;
+color:#1976d2;
+font-size:14px;
+font-weight:500;
+}
+
+.footer-links a:hover{
+text-decoration:underline;
+}
+
+.footer-copy{
+font-size:12px;
+color:#777;
 }
 
 </style>
@@ -94,7 +104,6 @@ opacity:1;
 <body>
 
 <!-- Top Banner -->
-
 <div class="app-banner">
 
 <img src="Screenshot_2026-03-16-08-32-00-894_com.miui.gallery-edit.jpg" alt="Trending Phones Banner">
@@ -105,8 +114,7 @@ Trending Phones
 
 </div>
 
-<!-- Google Ad Banner -->
-
+<!-- Google Ad -->
 <div style="margin:20px; text-align:center;">
 
 <ins class="adsbygoogle"
@@ -123,8 +131,7 @@ data-full-width-responsive="true">
 
 </div>
 
-<!-- Search Box -->
-
+<!-- Search -->
 <div class="search-box">
 <input id="search" placeholder="Search phone..." oninput="searchPhones()">
 </div>
@@ -145,10 +152,21 @@ navigator.serviceWorker.register("/service-worker.js");
 }
 </script>
 
-<!-- Footer -->
+<!-- ✅ PROFESSIONAL FOOTER -->
 
-<footer style="text-align:center; margin:30px 0; font-size:14px;">
-<a href="privacy.html">Privacy Policy</a>
+<footer class="app-footer">
+
+  <div class="footer-links">
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="terms.html">Terms & Conditions</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </div>
+
+  <p class="footer-copy">
+    © 2026 Trending Phones. All rights reserved.
+  </p>
+
 </footer>
 
 </body>
