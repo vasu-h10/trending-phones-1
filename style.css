@@ -48,20 +48,6 @@ from{opacity:0.7}
 to{opacity:1}
 }
 
-/* GOOGLE ADS BANNER */
-
-.google-ad{
-margin:10px;
-padding:10px;
-background:white;
-border-radius:12px;
-box-shadow:0 3px 10px rgba(0,0,0,0.15);
-display:flex;
-justify-content:center;
-align-items:center;
-min-height:90px;
-}
-
 /* SEARCH */
 
 .search-box{
@@ -99,7 +85,7 @@ box-shadow:0 6px 16px rgba(0,0,0,0.12);
 overflow:hidden;
 }
 
-/* GIF BACKGROUND FOR TOP CARD */
+/* GIF BACKGROUND */
 
 .gif-bg{
 position:absolute;
@@ -110,7 +96,7 @@ height:100%;
 background-image:url("celebration.gif");
 background-size:cover;
 background-position:center;
-opacity:0.6;
+opacity:0.5;
 z-index:0;
 pointer-events:none;
 }
@@ -134,16 +120,11 @@ box-shadow:0 3px 8px rgba(0,0,0,0.25);
 z-index:3;
 }
 
-/* TOP 1 STAR */
-
 .rank-badge.top1{
 width:52px;
 height:52px;
 font-size:30px;
 animation:starPulse 1.2s infinite;
-text-shadow:
-0 0 6px rgba(255,255,255,0.9),
-0 0 12px rgba(255,215,0,0.8);
 }
 
 @keyframes starPulse{
@@ -152,7 +133,7 @@ text-shadow:
 100%{transform:scale(1)}
 }
 
-/* PHONE IMAGE */
+/* IMAGE */
 
 .main-img{
 width:60%;
@@ -169,17 +150,59 @@ text-align:center;
 font-size:18px;
 font-weight:bold;
 margin-bottom:10px;
-position:relative;
-z-index:2;
 }
+
+/* 🔥 CAROUSEL */
+
+.spec-carousel{
+overflow:hidden;
+position:relative;
+margin-top:10px;
+}
+
+.spec-track{
+display:flex;
+transition:transform 0.3s ease;
+}
+
+.spec-slide{
+min-width:100%;
+background:#f8f8f8;
+padding:15px;
+border-radius:12px;
+font-size:14px;
+line-height:1.8;
+text-align:left;
+}
+
+/* DOTS */
+
+.dots{
+text-align:center;
+margin-top:6px;
+}
+
+.dot{
+height:8px;
+width:8px;
+margin:0 4px;
+background:#ccc;
+border-radius:50%;
+display:inline-block;
+transition:0.3s;
+}
+
+.dot.active{
+background:#000;
+}
+
+/* BUTTONS */
 
 .buy-buttons{
 display:flex;
 gap:10px;
 justify-content:center;
 margin-top:12px;
-position:relative;
-z-index:2;
 }
 
 .buy{
@@ -194,16 +217,7 @@ font-weight:bold;
 .amazon{background:#ff9900}
 .flipkart{background:#2874f0}
 
-.home-btn{
-background:#1976d2;
-color:white;
-border:none;
-padding:10px 16px;
-border-radius:8px;
-cursor:pointer;
-}
-
-/* ✅ FOOTER */
+/* FOOTER */
 
 .app-footer{
 background:#ffffff;
