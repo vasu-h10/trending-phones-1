@@ -22,6 +22,8 @@ function displayPhones(list){
 
   list.forEach((phone,index)=>{
 
+    const isTop = index === 0
+
     const amazon = "https://www.amazon.in/s?k="+encodeURIComponent(phone.name)
     const flipkart = "https://www.flipkart.com/search?q="+encodeURIComponent(phone.name)
 
@@ -31,10 +33,10 @@ function displayPhones(list){
     const display = phone.display && phone.display !== "Unknown" ? phone.display : "6.5 inch"
 
     const card = document.createElement("div")
-    card.className = "scroll-card"
+    card.className = isTop ? "scroll-card top-card" : "scroll-card"
 
     let badge=""
-    if(index===0){
+    if(isTop){
       badge=`<div class="gif-bg"></div>
       <div class="rank-badge top1">⭐</div>`
     }
@@ -85,7 +87,6 @@ function displayPhones(list){
 
 /* SWIPE */
 function initCarousel(){
-
   document.querySelectorAll(".spec-carousel").forEach(carousel=>{
 
     let track = carousel.querySelector(".spec-track")
@@ -98,7 +99,6 @@ function initCarousel(){
     })
 
     carousel.addEventListener("touchend",e=>{
-
       let endX = e.changedTouches[0].clientX
 
       if(startX-endX>50) index=Math.min(index+1,1)
@@ -108,7 +108,6 @@ function initCarousel(){
 
       dots.forEach(d=>d.classList.remove("active"))
       dots[index].classList.add("active")
-
     })
 
   })
