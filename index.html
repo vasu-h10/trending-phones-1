@@ -22,132 +22,26 @@
 src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2594728028551012"
 crossorigin="anonymous"></script>
 
-<style>
-
-/* Banner */
-.app-banner{
-  position:relative;
-  width:100%;
-  overflow:hidden;
-}
-
-.app-banner img{
-  width:100%;
-  height:170px;
-  object-fit:cover;
-  border-radius:12px;
-}
-
-.banner-title{
-  position:absolute;
-  left:40px;
-  top:50%;
-  transform:translateY(-50%);
-  font-size:42px;
-  font-family:'Great Vibes', cursive;
-  color:white;
-  text-shadow:
-    0 0 10px white,
-    0 0 20px white,
-    0 0 30px #00bfff,
-    0 0 50px #00bfff;
-  animation:blinkGlow 2s infinite alternate;
-}
-
-@keyframes blinkGlow{
-  from{opacity:0.7;}
-  to{opacity:1;}
-}
-
-/* GOOGLE AD */
-.google-ad{
-  margin:20px;
-  padding:10px;
-  background:white;
-  border-radius:12px;
-  box-shadow:0 3px 10px rgba(0,0,0,0.15);
-  text-align:center;
-  min-height:90px;
-}
-
-/* SECTION TEXT */
-.section{
-  padding:10px;
-  font-size:14px;
-  line-height:1.7;
-}
-
-/* FOOTER */
-.app-footer{
-  background:#ffffff;
-  margin-top:30px;
-  padding:20px;
-  text-align:center;
-  border-top:1px solid #ddd;
-}
-
-.footer-links{
-  display:flex;
-  flex-wrap:wrap;
-  justify-content:center;
-  gap:15px;
-  margin-bottom:10px;
-}
-
-.footer-links a{
-  text-decoration:none;
-  color:#1976d2;
-  font-size:14px;
-}
-
-.footer-links a:hover{
-  text-decoration:underline;
-}
-
-.footer-copy{
-  font-size:12px;
-  color:#777;
-}
-
-</style>
-
 </head>
 
 <body>
 
 <!-- Banner -->
 <div class="app-banner">
-  <img src="Screenshot_2026-03-16-08-32-00-894_com.miui.gallery-edit.jpg"
+  <img src="banner.jpg"
        onerror="this.src='https://via.placeholder.com/800x200?text=Trending+Phones'"
        alt="Trending Phones Banner">
   <div class="banner-title">Trending Phones</div>
 </div>
 
-<!-- Heading -->
 <h2 style="padding:10px;">Latest Trending Smartphones</h2>
 
-<!-- Content (VERY IMPORTANT for AdSense) -->
 <div class="section">
-
-<p>
-Trending Phones is a platform designed to help users discover the latest smartphones, compare specifications, and explore trending devices in the market.
-</p>
-
-<p>
-We provide detailed insights about mobile phones including display quality, camera performance, battery capacity, and processor efficiency. Users can easily browse trending phones and find the best device that suits their needs.
-</p>
-
-<p>
-Our platform covers popular brands like Xiaomi, Samsung, Vivo, Oppo, Realme, and many more. Whether you are looking for budget-friendly devices or premium flagship smartphones, Trending Phones helps you make better decisions.
-</p>
-
-<p>
-You can also search for any smartphone and directly explore purchase options through trusted platforms like Amazon and Flipkart.
-</p>
-
+<p>Trending Phones helps you discover the latest smartphones, compare specs, and explore trending devices.</p>
+<p>Find best phones by display, camera, battery, and performance across all brands.</p>
 </div>
 
-<!-- Google Ad -->
+<!-- Ad -->
 <div class="google-ad">
   <ins class="adsbygoogle"
        style="display:block"
@@ -156,7 +50,6 @@ You can also search for any smartphone and directly explore purchase options thr
        data-ad-format="auto"
        data-full-width-responsive="true">
   </ins>
-
   <script>
     (adsbygoogle = window.adsbygoogle || []).push({});
   </script>
@@ -180,9 +73,7 @@ if ("serviceWorker" in navigator) {
 }
 </script>
 
-<!-- Footer -->
 <footer class="app-footer">
-
   <div class="footer-links">
     <a href="privacy.html">Privacy Policy</a>
     <a href="terms.html">Terms</a>
@@ -190,10 +81,7 @@ if ("serviceWorker" in navigator) {
     <a href="contact.html">Contact</a>
   </div>
 
-  <p class="footer-copy">
-    © 2026 Trending Phones
-  </p>
-
+  <p class="footer-copy">© 2026 Trending Phones</p>
 </footer>
 
 </body>
