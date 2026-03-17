@@ -2,7 +2,7 @@ const axios = require("axios")
 const cheerio = require("cheerio")
 const fs = require("fs")
 
-/* ✅ FIXED HEADERS (IMPORTANT) */
+/* ✅ FIXED HEADERS */
 const headers = {
   headers: {
     "User-Agent":
@@ -31,34 +31,37 @@ async function getSpecs(url){
       display: "Unknown"
     }
 
-    /* ✅ FLEXIBLE EXTRACTION */
-    $("table tr").each((i, el)=>{
+    /* ✅ CORRECT GSMARENA STRUCTURE */
+    $(".specs-table").each((i, table)=>{
 
-      const key = $(el).find("td.ttl").text().trim().toLowerCase()
-      const val = $(el).find("td.nfo").text().trim()
-      const rowText = $(el).text().toLowerCase()
+      $(table).find("tr").each((j, row)=>{
 
-      if(!key && !rowText) return
+        const label = $(row).find("td.ttl").text().trim().toLowerCase()
+        const value = $(row).find("td.nfo").text().trim()
 
-      // BATTERY
-      if((key.includes("battery") || rowText.includes("battery")) && specs.battery === "Unknown"){
-        specs.battery = val || rowText
-      }
+        if(!label || !value) return
 
-      // CAMERA
-      if((key.includes("camera") || rowText.includes("camera")) && specs.camera === "Unknown"){
-        specs.camera = val || rowText
-      }
+        // 🔋 BATTERY
+        if(label.includes("battery")){
+          specs.battery = value
+        }
 
-      // PROCESSOR
-      if((key.includes("chipset") || rowText.includes("chipset")) && specs.processor === "Unknown"){
-        specs.processor = val || rowText
-      }
+        // 📷 CAMERA
+        if(label.includes("main camera") || label.includes("camera")){
+          specs.camera = value
+        }
 
-      // DISPLAY
-      if((key.includes("display") || key.includes("size") || rowText.includes("display")) && specs.display === "Unknown"){
-        specs.display = val || rowText
-      }
+        // ⚡ PROCESSOR
+        if(label.includes("chipset")){
+          specs.processor = value
+        }
+
+        // 📱 DISPLAY
+        if(label.includes("display") || label.includes("size")){
+          specs.display = value
+        }
+
+      })
 
     })
 
@@ -142,7 +145,7 @@ async function updatePhones(){
       brands.push("https://www.gsmarena.com/" + link)
     })
 
-    /* ⚡ TEST MODE (use this first to check) */
+    /* ⚡ FIRST RUN TEST (RECOMMENDED) */
     // brands = brands.slice(0, 2)
 
     let allPhones = []
