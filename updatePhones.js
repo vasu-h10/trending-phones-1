@@ -21,10 +21,13 @@ async function getSpecs(url){
       display: "Unknown"
     }
 
-    $(".specs-table tr").each((i, el)=>{
+    /* ✅ USE FLEXIBLE SELECTOR */
+    $("tr").each((i, el)=>{
 
       const key = $(el).find("td.ttl").text().trim().toLowerCase()
       const val = $(el).find("td.nfo").text().trim()
+
+      if(!key || !val) return
 
       if(key.includes("battery")){
         specs.battery = val
@@ -38,7 +41,7 @@ async function getSpecs(url){
         specs.processor = val
       }
 
-      if(key.includes("display")){
+      if(key.includes("display") || key.includes("size")){
         specs.display = val
       }
 
@@ -75,27 +78,28 @@ async function scrapePhones(pageUrl){
 
     const name = $(el).find("span").text().trim()
     const imgSrc = $(el).find("img").attr("src")
-    const image = "https://www.gsmarena.com/" + imgSrc
+
+    const image = imgSrc.startsWith("http")
+      ? imgSrc
+      : "https://www.gsmarena.com/" + imgSrc
 
     const link = $(el).find("a").attr("href")
     const phoneUrl = "https://www.gsmarena.com/" + link
 
     console.log("📱 Scraping:", name)
 
-    /* 🔥 GET REAL SPECS */
     const specs = await getSpecs(phoneUrl)
 
     phones.push({
-      name: name,
-      image: image,
+      name,
+      image,
       battery: specs.battery,
       camera: specs.camera,
       processor: specs.processor,
       display: specs.display
     })
 
-    /* ⚠️ DELAY PER PHONE (avoid blocking) */
-    await new Promise(r => setTimeout(r, 1200))
+    await new Promise(r => setTimeout(r, 1000))
   }
 
   let next = $("a.pages-next").attr("href")
@@ -122,7 +126,7 @@ async function updatePhones(){
       brands.push("https://www.gsmarena.com/" + link)
     })
 
-    /* ⚡ TEST MODE (remove later) */
+    /* ⚡ FAST TEST (REMOVE LATER) */
     // brands = brands.slice(0, 2)
 
     let allPhones = []
@@ -145,8 +149,7 @@ async function updatePhones(){
           page = null
         }
 
-        /* ⚠️ DELAY PER PAGE */
-        await new Promise(r => setTimeout(r, 2000))
+        await new Promise(r => setTimeout(r, 1500))
       }
 
     }
