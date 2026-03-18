@@ -22,7 +22,6 @@ async function loadPhones(){
 
     const data = await res.json()
 
-    // 🔥 LOAD LOCAL CLICKS
     const clickData = JSON.parse(localStorage.getItem("clicks")) || {}
 
     allPhones = (data.phones || []).map(p=>{
@@ -36,7 +35,6 @@ async function loadPhones(){
   }catch(e){
     console.error(e)
 
-    // 🔥 FALLBACK DATA
     allPhones = [
       { name: "iPhone 13", image: "https://via.placeholder.com/200" },
       { name: "Samsung Galaxy S21", image: "https://via.placeholder.com/200" },
@@ -53,7 +51,6 @@ function saveClick(name){
   let data = JSON.parse(localStorage.getItem("clicks")) || {}
 
   const key = normalize(name)
-
   data[key] = (data[key] || 0) + 1
 
   localStorage.setItem("clicks", JSON.stringify(data))
@@ -64,7 +61,6 @@ function showPage(page){
 
   currentPage = page
 
-  // 🔥 SORT BY CLICKS (TRENDING)
   allPhones.sort((a,b)=>b.clicks - a.clicks)
 
   const start = (page - 1) * phonesPerPage
@@ -90,7 +86,6 @@ function displayPhones(list){
     const card = document.createElement("div")
     card.className = index === 0 ? "scroll-card top-card" : "scroll-card"
 
-    // 🔥 TOP BADGE
     let topBadge = ""
     if(index === 0){
       topBadge = `<div class="top-label">🔥 Most Popular</div>`
@@ -126,14 +121,19 @@ function displayPhones(list){
         </div>
       </div>
 
-      <!-- 🔥 BUY BUTTON -->
       <div class="buy-section">
-        <button class="buy-btn"
-          onclick='buyNow(${JSON.stringify(phone)})'>
+        <button class="buy-btn" data-name="${phone.name}">
           🛒 Buy Now (Best Deal 🔥)
         </button>
       </div>
     `
+
+    // ✅ SAFE CLICK HANDLER (NO BUGS)
+    const btn = card.querySelector(".buy-btn")
+    btn.addEventListener("click", (e)=>{
+      e.stopPropagation()
+      buyNow(phone)
+    })
 
     container.appendChild(card)
   })
@@ -141,25 +141,29 @@ function displayPhones(list){
   setTimeout(initCarousel,300)
 }
 
-/* 🔥 BUY AMAZON (WITH FALLBACK) */
+/* BUY AMAZON (SMART FALLBACK) */
 function buyNow(phone){
 
   saveClick(phone.name)
 
-  // ✅ DIRECT LINK (IF AVAILABLE)
+  let url = ""
+
   if(phone.buyLink && phone.buyLink !== ""){
-    window.open(phone.buyLink, "_blank")
+    url = phone.buyLink
+  }else{
+    url = "https://www.amazon.in/s?k=" +
+          encodeURIComponent(phone.name) +
+          "&tag=trendingpho05-21"
   }
 
-  // 🔥 FALLBACK TO SEARCH
-  else{
-    const url =
-      "https://www.amazon.in/s?k=" +
-      encodeURIComponent(phone.name) +
-      "&tag=trendingpho05-21"
-
-    window.open(url, "_blank")
-  }
+  // ✅ SAFE OPEN (NO BLOCK)
+  const a = document.createElement("a")
+  a.href = url
+  a.target = "_blank"
+  a.rel = "noopener noreferrer"
+  document.body.appendChild(a)
+  a.click()
+  a.remove()
 }
 
 /* CAROUSEL */
