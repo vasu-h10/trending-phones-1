@@ -15,22 +15,26 @@ async function loadPhones(){
   const res = await fetch("phones.json")
   const data = await res.json()
 
-  // 🔥 REMOVE DEFAULT RANKING
   allPhones = (data.phones || []).map((p)=>({
     ...p,
     score: 0
   }))
 
-  // 🔥 LOAD TRENDING FIRST
   await loadTrendingFromDB()
-
-  // 🔥 THEN DISPLAY
   displayPhones(allPhones.slice(0,40))
 }
 
 /* NORMALIZE */
 function normalize(text){
   return text.toLowerCase().replace(/[^a-z0-9]/g,"")
+}
+
+/* 🔥 IMPROVED MATCH (VERY IMPORTANT FIX) */
+function isMatch(phoneName, trendKey){
+  phoneName = normalize(phoneName)
+  trendKey = normalize(trendKey)
+
+  return phoneName.includes(trendKey)
 }
 
 /* DISPLAY */
@@ -109,12 +113,11 @@ async function saveTrending(keyword){
     })
   }
 
-  // 🔥 RELOAD TRENDING AFTER UPDATE
   await loadTrendingFromDB()
   displayPhones(allPhones.slice(0,40))
 }
 
-/* 🔥 LOAD TRENDING + STRICT RANKING */
+/* 🔥 LOAD TRENDING + FINAL RANKING */
 async function loadTrendingFromDB(){
 
   await waitFirebase()
@@ -137,12 +140,12 @@ async function loadTrendingFromDB(){
     phone.score = 0
   })
 
-  // 🔥 APPLY STRICT ORDER (TOP 1,2,3)
+  // 🔥 APPLY STRICT RANKING
   trendingList.forEach((trend, index)=>{
 
     allPhones.forEach(phone=>{
 
-      if(normalize(phone.name).includes(trend.key)){
+      if(isMatch(phone.name, trend.key)){
 
         phone.score = (trendingList.length - index) * 1000 + trend.count
 
