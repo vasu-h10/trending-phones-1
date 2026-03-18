@@ -15,13 +15,17 @@ async function loadPhones(){
   const res = await fetch("phones.json")
   const data = await res.json()
 
-  allPhones = (data.phones || []).map((p,i)=>({
+  // 🔥 REMOVE DEFAULT RANKING
+  allPhones = (data.phones || []).map((p)=>({
     ...p,
-    score: 50 - i
+    score: 0
   }))
 
+  // 🔥 LOAD TRENDING FIRST
+  await loadTrendingFromDB()
+
+  // 🔥 THEN DISPLAY
   displayPhones(allPhones.slice(0,40))
-  loadTrendingFromDB()
 }
 
 /* NORMALIZE */
@@ -45,7 +49,6 @@ function displayPhones(list){
     card.className = isTop ? "scroll-card top-card" : "scroll-card"
 
     card.onclick = ()=>{
-      phone.score += 10
       saveTrending(phone.name)
     }
 
@@ -106,10 +109,12 @@ async function saveTrending(keyword){
     })
   }
 
-  loadTrendingFromDB()
+  // 🔥 RELOAD TRENDING AFTER UPDATE
+  await loadTrendingFromDB()
+  displayPhones(allPhones.slice(0,40))
 }
 
-/* 🔥 LOAD TRENDING + APPLY RANKING */
+/* 🔥 LOAD TRENDING + STRICT RANKING */
 async function loadTrendingFromDB(){
 
   await waitFirebase()
@@ -121,46 +126,49 @@ async function loadTrendingFromDB(){
 
   const snapshot = await window.getDocs(q)
 
-  let trendingMap = {}
+  let trendingList = []
 
   snapshot.forEach(docSnap=>{
-    const data = docSnap.data()
-    trendingMap[data.key] = data.count
+    trendingList.push(docSnap.data())
   })
 
-  // 🔥 APPLY TRENDING BOOST
+  // 🔥 RESET SCORES
   allPhones.forEach(phone=>{
-    const nameKey = normalize(phone.name)
-
-    Object.keys(trendingMap).forEach(key=>{
-      if(nameKey.includes(key)){
-        phone.score += trendingMap[key] * 30
-      }
-    })
+    phone.score = 0
   })
 
-  // 🔥 RE-RENDER WITH NEW RANKING
-  displayPhones(allPhones.slice(0,40))
+  // 🔥 APPLY STRICT ORDER (TOP 1,2,3)
+  trendingList.forEach((trend, index)=>{
+
+    allPhones.forEach(phone=>{
+
+      if(normalize(phone.name).includes(trend.key)){
+
+        phone.score = (trendingList.length - index) * 1000 + trend.count
+
+      }
+
+    })
+
+  })
 
   // 🔥 SHOW TRENDING UI
   const box = document.getElementById("trending")
   box.innerHTML=""
 
-  Object.entries(trendingMap)
-    .sort((a,b)=>b[1]-a[1])
-    .slice(0,5)
-    .forEach(([key,count])=>{
-      const div = document.createElement("div")
-      div.className="trend-phone"
-      div.innerText = `${key} 🔥 ${count}`
+  trendingList.slice(0,5).forEach((trend)=>{
 
-      div.onclick=()=>{
-        document.getElementById("search").value=key
-        searchPhones()
-      }
+    const div = document.createElement("div")
+    div.className="trend-phone"
+    div.innerText = `${trend.label} 🔥 ${trend.count}`
 
-      box.appendChild(div)
-    })
+    div.onclick=()=>{
+      document.getElementById("search").value=trend.label
+      searchPhones()
+    }
+
+    box.appendChild(div)
+  })
 }
 
 loadPhones()
