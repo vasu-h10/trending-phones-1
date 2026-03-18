@@ -1,7 +1,17 @@
 let allPhones = []
 
+/* ✅ WAIT FOR FIREBASE */
+async function waitFirebase(){
+  while(!window.db){
+    await new Promise(r=>setTimeout(r,100))
+  }
+}
+
 /* LOAD PHONES */
 async function loadPhones(){
+
+  await waitFirebase() // 🔥 important
+
   const res = await fetch("phones.json")
   const data = await res.json()
 
@@ -67,10 +77,13 @@ function searchPhones(){
 /* 🔥 SAVE TO FIREBASE */
 async function saveTrending(keyword){
 
-  const key = normalize(keyword)
-  const ref = collection(db, "trending")
+  await waitFirebase()
 
-  const snapshot = await getDocs(ref)
+  const db = window.db
+  const key = normalize(keyword)
+
+  const ref = window.collection(db, "trending")
+  const snapshot = await window.getDocs(ref)
 
   let found = null
 
@@ -81,12 +94,12 @@ async function saveTrending(keyword){
   })
 
   if(found){
-    const docRef = doc(db,"trending",found.id)
-    await updateDoc(docRef,{
-      count: increment(1)
+    const docRef = window.doc(db,"trending",found.id)
+    await window.updateDoc(docRef,{
+      count: window.increment(1)
     })
   }else{
-    await addDoc(ref,{
+    await window.addDoc(ref,{
       key:key,
       label:keyword,
       count:1
@@ -99,10 +112,14 @@ async function saveTrending(keyword){
 /* 🔥 LOAD TRENDING FROM FIREBASE */
 async function loadTrendingFromDB(){
 
-  const ref = collection(db, "trending")
-  const q = query(ref, orderBy("count","desc"), limit(5))
+  await waitFirebase()
 
-  const snapshot = await getDocs(q)
+  const db = window.db
+
+  const ref = window.collection(db, "trending")
+  const q = window.query(ref, window.orderBy("count","desc"), window.limit(5))
+
+  const snapshot = await window.getDocs(q)
 
   const box = document.getElementById("trending")
   box.innerHTML=""
