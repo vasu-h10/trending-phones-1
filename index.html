@@ -2,7 +2,6 @@
 <html>
 
 <head>
-
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Trending Phones</title>
 
@@ -14,75 +13,64 @@
 <link rel="icon" href="icon-192.png">
 <link rel="apple-touch-icon" href="icon-192.png">
 
-<!-- Google Font -->
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
 
-<!-- Google AdSense -->
-<script async
-src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2594728028551012"
-crossorigin="anonymous"></script>
+<!-- Firebase -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-app.js";
+  import { getFirestore, collection, addDoc, getDocs, query, orderBy, limit, increment, updateDoc, doc } 
+  from "https://www.gstatic.com/firebasejs/12.10.0/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyC3DGlJNkDoNRgwdqJCzpXDycD7oDqnKzs",
+    authDomain: "trending-phones.firebaseapp.com",
+    projectId: "trending-phones",
+    storageBucket: "trending-phones.firebasestorage.app",
+    messagingSenderId: "40687626103",
+    appId: "1:40687626103:web:4194203077497086076372"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+  window.db = db;
+  window.collection = collection;
+  window.addDoc = addDoc;
+  window.getDocs = getDocs;
+  window.query = query;
+  window.orderBy = orderBy;
+  window.limit = limit;
+  window.increment = increment;
+  window.updateDoc = updateDoc;
+  window.doc = doc;
+</script>
 
 </head>
 
 <body>
 
-<!-- Banner -->
 <div class="app-banner">
   <img src="banner.jpg"
-       onerror="this.src='https://via.placeholder.com/800x200?text=Trending+Phones'"
-       alt="Trending Phones Banner">
+       onerror="this.src='https://via.placeholder.com/800x200?text=Trending+Phones'">
   <div class="banner-title">Trending Phones</div>
 </div>
 
 <h2 style="padding:10px;">Latest Trending Smartphones</h2>
 
 <div class="section">
-<p>Trending Phones helps you discover the latest smartphones, compare specs, and explore trending devices.</p>
-<p>Find best phones by display, camera, battery, and performance across all brands.</p>
+<p>Discover latest phones, compare specs and see trending devices in real-time.</p>
 </div>
 
-<!-- Ad -->
-<div class="google-ad">
-  <ins class="adsbygoogle"
-       style="display:block"
-       data-ad-client="ca-pub-2594728028551012"
-       data-ad-slot="1234567890"
-       data-ad-format="auto"
-       data-full-width-responsive="true">
-  </ins>
-  <script>
-    (adsbygoogle = window.adsbygoogle || []).push({});
-  </script>
-</div>
-
-<!-- Search -->
 <div class="search-box">
   <input id="search" placeholder="Search phone..." oninput="searchPhones()">
 </div>
 
-<h3 style="padding-left:10px">🔥 Trending Searches</h3>
+<h3 style="padding-left:10px">🔥 Live Trending</h3>
 
 <div id="trending"></div>
 <div id="scroll" class="scroll-container"></div>
 
 <script src="app.js"></script>
-
-<script>
-if ("serviceWorker" in navigator) {
-  navigator.serviceWorker.register("/service-worker.js");
-}
-</script>
-
-<footer class="app-footer">
-  <div class="footer-links">
-    <a href="privacy.html">Privacy Policy</a>
-    <a href="terms.html">Terms</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
-  </div>
-
-  <p class="footer-copy">© 2026 Trending Phones</p>
-</footer>
 
 </body>
 </html>
