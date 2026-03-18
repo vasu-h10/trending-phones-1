@@ -2,8 +2,9 @@
 <html>
 
 <head>
+
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Trending Phones</title>
+<title>Latest Smartphones</title>
 
 <link rel="stylesheet" href="style.css">
 <link rel="manifest" href="manifest.json">
@@ -13,64 +14,183 @@
 <link rel="icon" href="icon-192.png">
 <link rel="apple-touch-icon" href="icon-192.png">
 
+<!-- Google Font -->
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
 
-<!-- Firebase -->
-<script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-app.js";
-  import { getFirestore, collection, addDoc, getDocs, query, orderBy, limit, increment, updateDoc, doc } 
-  from "https://www.gstatic.com/firebasejs/12.10.0/firebase-firestore.js";
+<!-- Google AdSense -->
+<script async
+src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2594728028551012"
+crossorigin="anonymous"></script>
 
-  const firebaseConfig = {
-    apiKey: "AIzaSyC3DGlJNkDoNRgwdqJCzpXDycD7oDqnKzs",
-    authDomain: "trending-phones.firebaseapp.com",
-    projectId: "trending-phones",
-    storageBucket: "trending-phones.firebasestorage.app",
-    messagingSenderId: "40687626103",
-    appId: "1:40687626103:web:4194203077497086076372"
-  };
+<style>
 
-  const app = initializeApp(firebaseConfig);
-  const db = getFirestore(app);
+/* Banner */
+.app-banner{
+  position:relative;
+  width:100%;
+  overflow:hidden;
+}
 
-  window.db = db;
-  window.collection = collection;
-  window.addDoc = addDoc;
-  window.getDocs = getDocs;
-  window.query = query;
-  window.orderBy = orderBy;
-  window.limit = limit;
-  window.increment = increment;
-  window.updateDoc = updateDoc;
-  window.doc = doc;
-</script>
+.app-banner img{
+  width:100%;
+  height:170px;
+  object-fit:cover;
+  border-radius:12px;
+}
+
+.banner-title{
+  position:absolute;
+  left:40px;
+  top:50%;
+  transform:translateY(-50%);
+  font-size:42px;
+  font-family:'Great Vibes', cursive;
+  color:white;
+  text-shadow:
+    0 0 10px white,
+    0 0 20px white,
+    0 0 30px #00bfff,
+    0 0 50px #00bfff;
+  animation:blinkGlow 2s infinite alternate;
+}
+
+@keyframes blinkGlow{
+  from{opacity:0.7;}
+  to{opacity:1;}
+}
+
+/* GOOGLE AD */
+.google-ad{
+  margin:20px;
+  padding:10px;
+  background:white;
+  border-radius:12px;
+  box-shadow:0 3px 10px rgba(0,0,0,0.15);
+  text-align:center;
+  min-height:90px;
+}
+
+/* SECTION TEXT */
+.section{
+  padding:10px;
+  font-size:14px;
+  line-height:1.7;
+}
+
+/* FOOTER */
+.app-footer{
+  background:#ffffff;
+  margin-top:30px;
+  padding:20px;
+  text-align:center;
+  border-top:1px solid #ddd;
+}
+
+.footer-links{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:15px;
+  margin-bottom:10px;
+}
+
+.footer-links a{
+  text-decoration:none;
+  color:#1976d2;
+  font-size:14px;
+}
+
+.footer-links a:hover{
+  text-decoration:underline;
+}
+
+.footer-copy{
+  font-size:12px;
+  color:#777;
+}
+
+</style>
 
 </head>
 
 <body>
 
+<!-- ✅ Banner (FIXED IMAGE PATH) -->
 <div class="app-banner">
-  <img src="banner.jpg"
-       onerror="this.src='https://via.placeholder.com/800x200?text=Trending+Phones'">
-  <div class="banner-title">Trending Phones</div>
+  <img src="./banner.jpg"
+       onerror="this.src='https://via.placeholder.com/800x200?text=Latest+Smartphones'"
+       alt="Latest Smartphones Banner">
+  <div class="banner-title">Latest Smartphones</div>
 </div>
 
-<h2 style="padding:10px;">Latest Trending Smartphones</h2>
+<!-- ✅ Heading -->
+<h2 style="padding:10px;">Explore Latest Smartphones</h2>
 
+<!-- ✅ Description (AdSense important) -->
 <div class="section">
-<p>Discover latest phones, compare specs and see trending devices in real-time.</p>
+
+<p>
+Explore the latest smartphones, compare specifications, and discover new mobile devices from top brands like Samsung, Xiaomi, Vivo, Oppo, and Realme.
+</p>
+
+<p>
+Find detailed insights about mobile phones including display quality, camera performance, battery life, and processor capabilities.
+</p>
+
+<p>
+Search any smartphone and explore buying options through trusted platforms like Amazon and Flipkart.
+</p>
+
 </div>
 
+<!-- ✅ Google Ad -->
+<div class="google-ad">
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-2594728028551012"
+       data-ad-slot="1234567890"
+       data-ad-format="auto"
+       data-full-width-responsive="true">
+  </ins>
+
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+</div>
+
+<!-- 🔍 Search -->
 <div class="search-box">
   <input id="search" placeholder="Search phone..." oninput="searchPhones()">
 </div>
 
-<h3 style="padding-left:10px">🔥 Live Trending</h3>
+<h3 style="padding-left:10px">🔥 Trending Searches</h3>
 
 <div id="trending"></div>
 <div id="scroll" class="scroll-container"></div>
 
 <script src="app.js"></script>
+
+<script>
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("/service-worker.js");
+}
+</script>
+
+<!-- ✅ Footer -->
+<footer class="app-footer">
+
+  <div class="footer-links">
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="terms.html">Terms</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </div>
+
+  <p class="footer-copy">
+    © 2026 Latest Smartphones
+  </p>
+
+</footer>
 
 </body>
 </html>
