@@ -10,7 +10,7 @@ async function waitFirebase(){
 /* LOAD PHONES */
 async function loadPhones(){
 
-  await waitFirebase() // 🔥 important
+  await waitFirebase()
 
   const res = await fetch("phones.json")
   const data = await res.json()
@@ -109,7 +109,7 @@ async function saveTrending(keyword){
   loadTrendingFromDB()
 }
 
-/* 🔥 LOAD TRENDING FROM FIREBASE */
+/* 🔥 LOAD TRENDING + APPLY RANKING */
 async function loadTrendingFromDB(){
 
   await waitFirebase()
@@ -117,27 +117,50 @@ async function loadTrendingFromDB(){
   const db = window.db
 
   const ref = window.collection(db, "trending")
-  const q = window.query(ref, window.orderBy("count","desc"), window.limit(5))
+  const q = window.query(ref, window.orderBy("count","desc"))
 
   const snapshot = await window.getDocs(q)
 
-  const box = document.getElementById("trending")
-  box.innerHTML=""
+  let trendingMap = {}
 
   snapshot.forEach(docSnap=>{
     const data = docSnap.data()
-
-    const div = document.createElement("div")
-    div.className="trend-phone"
-    div.innerText = `${data.label} 🔥 ${data.count}`
-
-    div.onclick=()=>{
-      document.getElementById("search").value=data.label
-      searchPhones()
-    }
-
-    box.appendChild(div)
+    trendingMap[data.key] = data.count
   })
+
+  // 🔥 APPLY TRENDING BOOST
+  allPhones.forEach(phone=>{
+    const nameKey = normalize(phone.name)
+
+    Object.keys(trendingMap).forEach(key=>{
+      if(nameKey.includes(key)){
+        phone.score += trendingMap[key] * 30
+      }
+    })
+  })
+
+  // 🔥 RE-RENDER WITH NEW RANKING
+  displayPhones(allPhones.slice(0,40))
+
+  // 🔥 SHOW TRENDING UI
+  const box = document.getElementById("trending")
+  box.innerHTML=""
+
+  Object.entries(trendingMap)
+    .sort((a,b)=>b[1]-a[1])
+    .slice(0,5)
+    .forEach(([key,count])=>{
+      const div = document.createElement("div")
+      div.className="trend-phone"
+      div.innerText = `${key} 🔥 ${count}`
+
+      div.onclick=()=>{
+        document.getElementById("search").value=key
+        searchPhones()
+      }
+
+      box.appendChild(div)
+    })
 }
 
 loadPhones()
