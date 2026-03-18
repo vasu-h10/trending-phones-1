@@ -1,28 +1,28 @@
 let allPhones = []
 
-/* LOAD PHONES (SAFE) */
+/* LOAD PHONES */
 async function loadPhones(){
 
-  try{
+  const res = await fetch("phones.json")
+  const data = await res.json()
 
-    const res = await fetch("phones.json")
-    const data = await res.json()
+  allPhones = (data.phones || []).map(p=>({
+    ...p,
+    clicks: 0,
+    score: 0
+  }))
 
-    allPhones = (data.phones || []).map((p)=>({
-      ...p,
-      score: 1
-    }))
-
-    displayPhones(allPhones.slice(0,40))
-
-  }catch(err){
-    console.log("ERROR loading phones:", err)
-  }
+  displayPhones(allPhones)
 }
 
 /* NORMALIZE */
 function normalize(text){
   return text.toLowerCase().replace(/[^a-z0-9]/g,"")
+}
+
+/* CALCULATE SCORE */
+function calculateScore(phone){
+  return (phone.clicks || 0) * 10
 }
 
 /* DISPLAY */
@@ -31,12 +31,25 @@ function displayPhones(list){
   const container = document.getElementById("scroll")
   container.innerHTML = ""
 
+  // 🔥 SORT BY TRENDING
+  list.forEach(p=>{
+    p.score = calculateScore(p)
+  })
+
+  list.sort((a,b)=>b.score - a.score)
+
   list.forEach((phone,index)=>{
 
     const isTop = index === 0
 
     const card = document.createElement("div")
     card.className = isTop ? "scroll-card top-card" : "scroll-card"
+
+    // 🔥 CLICK TRACK
+    card.onclick = ()=>{
+      phone.clicks++
+      displayPhones(allPhones)
+    }
 
     card.innerHTML = `
       <div class="phone-title">${phone.name}</div>
@@ -47,7 +60,7 @@ function displayPhones(list){
   })
 }
 
-/* SEARCH (BASIC WORKING) */
+/* SEARCH */
 function searchPhones(){
 
   const keyword=document.getElementById("search").value.trim()
@@ -57,9 +70,7 @@ function searchPhones(){
     normalize(p.name).includes(normalize(keyword))
   )
 
-  if(results.length){
-    displayPhones(results.slice(0,40))
-  }
+  displayPhones(results)
 }
 
 loadPhones()
