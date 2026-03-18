@@ -29,16 +29,25 @@ function calculateScore(p){
 /* LOAD */
 async function loadPhones(){
 
-  const res = await fetch("phones.json")
-  const data = await res.json()
+  const container = document.getElementById("scroll")
+  container.innerHTML = "Loading phones..."
 
-  allPhones = (data.phones || []).map(p=>({
-    ...p,
-    clicks: 0,
-    ratingTotal: 0,
-    reviews: 0,
-    score: 0
-  }))
+  try{
+    const res = await fetch("phones.json")
+    const data = await res.json()
+
+    allPhones = (data.phones || []).map(p=>({
+      ...p,
+      clicks: 0,
+      ratingTotal: 0,
+      reviews: 0,
+      score: 0
+    }))
+  }catch(e){
+    container.innerHTML = "Failed to load phones ❌"
+    console.error(e)
+    return
+  }
 
   // 🔥 LOAD FIREBASE DATA
   try{
@@ -60,6 +69,7 @@ async function loadPhones(){
     console.log("firebase load skipped", e)
   }
 
+  // 🔥 SHOW FIRST PAGE IMMEDIATELY
   showPage(1)
 }
 
@@ -142,7 +152,7 @@ function displayPhones(list){
       : "0.0"
 
     const card = document.createElement("div")
-    card.className = "scroll-card"
+    card.className = index === 0 ? "scroll-card top-card" : "scroll-card"
 
     card.onclick = ()=>{
       phone.clicks++
@@ -155,19 +165,17 @@ function displayPhones(list){
 
       <img class="main-img" src="${phone.image}">
 
-      <!-- ⭐ RATING -->
       <div class="rating-box">
         <div class="stars">
-          <span onclick="rate('${phone.name}',1)">⭐</span>
-          <span onclick="rate('${phone.name}',2)">⭐</span>
-          <span onclick="rate('${phone.name}',3)">⭐</span>
-          <span onclick="rate('${phone.name}',4)">⭐</span>
-          <span onclick="rate('${phone.name}',5)">⭐</span>
+          <span onclick="event.stopPropagation(); rate('${phone.name}',1)">⭐</span>
+          <span onclick="event.stopPropagation(); rate('${phone.name}',2)">⭐</span>
+          <span onclick="event.stopPropagation(); rate('${phone.name}',3)">⭐</span>
+          <span onclick="event.stopPropagation(); rate('${phone.name}',4)">⭐</span>
+          <span onclick="event.stopPropagation(); rate('${phone.name}',5)">⭐</span>
         </div>
         <div class="rating-text">Rating: ${avgRating}</div>
       </div>
 
-      <!-- 🔥 CAROUSEL -->
       <div class="spec-carousel">
         <div class="spec-track">
 
@@ -198,7 +206,7 @@ function displayPhones(list){
   setTimeout(initCarousel,300)
 }
 
-/* RATE HANDLER */
+/* RATE */
 function rate(name,value){
   saveRating(name,value)
   alert("⭐ Thanks for rating!")
@@ -282,4 +290,7 @@ function searchPhones(){
   displayPhones(results.slice(0,20))
 }
 
-loadPhones()
+/* 🔥 LOAD ONLY AFTER DOM READY */
+document.addEventListener("DOMContentLoaded", ()=>{
+  loadPhones()
+})
