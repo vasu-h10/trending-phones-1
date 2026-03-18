@@ -69,7 +69,6 @@ async function loadPhones(){
     console.log("firebase load skipped", e)
   }
 
-  // 🔥 SHOW FIRST PAGE IMMEDIATELY
   showPage(1)
 }
 
@@ -154,10 +153,15 @@ function displayPhones(list){
     const card = document.createElement("div")
     card.className = index === 0 ? "scroll-card top-card" : "scroll-card"
 
+    // 🔥 AFFILIATE LINK AUTO OPEN
     card.onclick = ()=>{
       phone.clicks++
       saveClick(phone.name)
-      showPage(currentPage)
+
+      window.open(
+        "https://www.amazon.in/s?k=" + encodeURIComponent(phone.name) + "&tag=trendingpho05-21",
+        "_blank"
+      )
     }
 
     card.innerHTML = `
@@ -290,7 +294,7 @@ function searchPhones(){
   displayPhones(results.slice(0,20))
 }
 
-/* 🔥 LOAD ONLY AFTER DOM READY */
+/* LOAD */
 document.addEventListener("DOMContentLoaded", ()=>{
   loadPhones()
 })
