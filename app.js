@@ -36,7 +36,7 @@ async function loadPhones(){
   }catch(e){
     console.error(e)
 
-    // 🔥 FALLBACK (if JSON fails)
+    // 🔥 FALLBACK DATA
     allPhones = [
       { name: "iPhone 13", image: "https://via.placeholder.com/200" },
       { name: "Samsung Galaxy S21", image: "https://via.placeholder.com/200" },
@@ -54,11 +54,7 @@ function saveClick(name){
 
   const key = normalize(name)
 
-  if(!data[key]){
-    data[key] = 1
-  }else{
-    data[key]++
-  }
+  data[key] = (data[key] || 0) + 1
 
   localStorage.setItem("clicks", JSON.stringify(data))
 }
@@ -68,7 +64,7 @@ function showPage(page){
 
   currentPage = page
 
-  // 🔥 SORT BY TRENDING (CLICKS)
+  // 🔥 SORT BY CLICKS (TRENDING)
   allPhones.sort((a,b)=>b.clicks - a.clicks)
 
   const start = (page - 1) * phonesPerPage
@@ -94,7 +90,15 @@ function displayPhones(list){
     const card = document.createElement("div")
     card.className = index === 0 ? "scroll-card top-card" : "scroll-card"
 
+    // 🔥 TOP BADGE
+    let topBadge = ""
+    if(index === 0){
+      topBadge = `<div class="top-label">🔥 Most Popular</div>`
+    }
+
     card.innerHTML = `
+      ${topBadge}
+
       <div class="phone-title">${phone.name}</div>
 
       <img class="main-img" src="${phone.image}">
@@ -122,10 +126,10 @@ function displayPhones(list){
         </div>
       </div>
 
-      <!-- 🔥 AMAZON BUTTON -->
+      <!-- 🔥 BUY BUTTON -->
       <div class="buy-section">
         <button class="buy-btn"
-          onclick="buyNow('${phone.name}')">
+          onclick='buyNow(${JSON.stringify(phone)})'>
           🛒 Buy Now (Best Deal 🔥)
         </button>
       </div>
@@ -137,15 +141,25 @@ function displayPhones(list){
   setTimeout(initCarousel,300)
 }
 
-/* BUY AMAZON */
-function buyNow(name){
+/* 🔥 BUY AMAZON (WITH FALLBACK) */
+function buyNow(phone){
 
-  saveClick(name)
+  saveClick(phone.name)
 
-  window.open(
-    "https://www.amazon.in/s?k=" + encodeURIComponent(name) + "&tag=trendingpho05-21",
-    "_blank"
-  )
+  // ✅ DIRECT LINK (IF AVAILABLE)
+  if(phone.buyLink && phone.buyLink !== ""){
+    window.open(phone.buyLink, "_blank")
+  }
+
+  // 🔥 FALLBACK TO SEARCH
+  else{
+    const url =
+      "https://www.amazon.in/s?k=" +
+      encodeURIComponent(phone.name) +
+      "&tag=trendingpho05-21"
+
+    window.open(url, "_blank")
+  }
 }
 
 /* CAROUSEL */
