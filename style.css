@@ -42,7 +42,7 @@ body{
 
 /* 🔥 CARD */
 .card{
-  min-width:160px;
+  min-width:170px; /* 🔥 little bigger */
   background:white;
   border-radius:12px;
   padding:10px;
@@ -50,12 +50,19 @@ body{
   text-align:center;
 }
 
-/* 🔥 IMAGE */
+/* 🔥 IMAGE (FIXED HERE) */
 .card img{
   width:100%;
-  height:140px;
-  object-fit:cover;
+  height:160px;              /* 🔥 increased */
+  object-fit:contain;        /* 🔥 IMPORTANT (no crop) */
+  background:#fff;           /* 🔥 clean look */
   border-radius:10px;
+}
+
+/* 🔥 PRODUCT NAME */
+.card div{
+  font-size:14px;
+  margin-top:5px;
 }
 
 /* 🔥 BUTTON */
@@ -66,7 +73,7 @@ body{
   border-radius:8px;
   color:white;
   font-size:12px;
-  margin-top:5px;
+  margin-top:6px;
   cursor:pointer;
 }
 
