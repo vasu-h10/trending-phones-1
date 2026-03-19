@@ -73,7 +73,7 @@ body.dark .app-bar{
 .card{
   background:#fff;
   border-radius:16px;
-  padding:22px 14px 14px; /* 🔥 extra space for badge */
+  padding:26px 14px 14px; /* 🔥 extra space for circle */
   box-shadow:0 6px 18px rgba(0,0,0,0.08);
   transition:0.25s;
 
@@ -83,7 +83,7 @@ body.dark .app-bar{
   text-align:center;
 
   position:relative;
-  overflow:hidden; /* ✅ VERY IMPORTANT */
+  overflow:hidden;
 }
 
 body.dark .card{
@@ -97,7 +97,7 @@ body.dark .card{
 /* 🔥 IMAGE */
 .card img{
   width:100%;
-  max-width:260px; /* 🔥 improved size */
+  max-width:260px;
   height:auto;
   object-fit:contain;
   margin-bottom:10px;
@@ -124,20 +124,31 @@ body.dark .card{
   margin:5px 0;
 }
 
-/* 🔥 BADGE (FINAL FIX) */
+/* 🔥 🔴 CIRCLE BADGE (FINAL) */
 .top-badge{
   position:absolute;
   top:12px;
   left:12px;
 
-  background:linear-gradient(90deg,#ff9800,#ff5722);
-  color:#fff;
-  font-size:11px;
-  padding:5px 10px;
-  border-radius:6px;
-  font-weight:bold;
+  width:55px;
+  height:55px;
 
-  z-index:10; /* 🔥 always on top */
+  background:linear-gradient(135deg,#ff9800,#ff5722);
+  color:#fff;
+
+  border-radius:50%;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  font-size:12px;
+  font-weight:bold;
+  text-align:center;
+
+  box-shadow:0 4px 10px rgba(0,0,0,0.2);
+
+  z-index:10;
 }
 
 /* 🥇 TOP 1 */
