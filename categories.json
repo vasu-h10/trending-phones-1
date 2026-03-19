@@ -1,0 +1,44 @@
+{
+  "categories": [
+    {
+      "name": "Mobiles",
+      "file": "data/mobiles.json"
+    },
+    {
+      "name": "Earbuds",
+      "file": "data/earbuds.json"
+    },
+    {
+      "name": "TVs",
+      "file": "data/tvs.json"
+    },
+    {
+      "name": "Refrigerators",
+      "file": "data/refrigerators.json"
+    },
+    {
+      "name": "Washing Machines",
+      "file": "data/washing-machines.json"
+    },
+    {
+      "name": "Air Conditioners",
+      "file": "data/ac.json"
+    },
+    {
+      "name": "Laptops",
+      "file": "data/laptops.json"
+    },
+    {
+      "name": "Smartwatches",
+      "file": "data/smartwatches.json"
+    },
+    {
+      "name": "Tablets",
+      "file": "data/tablets.json"
+    },
+    {
+      "name": "Speakers",
+      "file": "data/speakers.json"
+    }
+  ]
+}
