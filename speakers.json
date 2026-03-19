@@ -1,0 +1,35 @@
+{
+  "category": "Speakers",
+  "items": [
+    {
+      "name": "JBL Flip 5",
+      "image": "https://images.unsplash.com/photo-1585386959984-a41552231658",
+      "battery": "12 hrs",
+      "type": "Bluetooth"
+    },
+    {
+      "name": "Boat Stone 1200",
+      "image": "https://images.unsplash.com/photo-1589003077984-894e133dabab",
+      "battery": "9 hrs",
+      "type": "Bluetooth"
+    },
+    {
+      "name": "Sony SRS XB13",
+      "image": "https://images.unsplash.com/photo-1545454675-3531b543be5d",
+      "battery": "16 hrs",
+      "type": "Extra Bass"
+    },
+    {
+      "name": "Mi Portable Speaker",
+      "image": "https://images.unsplash.com/photo-1572569511254-d8f925fe2cbb",
+      "battery": "13 hrs",
+      "type": "Compact"
+    },
+    {
+      "name": "Infinity Clubz Mini",
+      "image": "https://images.unsplash.com/photo-1585386959984-a41552231658",
+      "battery": "10 hrs",
+      "type": "Bluetooth"
+    }
+  ]
+}
