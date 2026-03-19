@@ -1,12 +1,12 @@
 {
-  "name": "Trending Deals Hub",
-  "short_name": "Deals",
-  "start_url": "/",
+  "name": "Top 10 Trending Phones",
+  "short_name": "Top Phones",
+  "start_url": "./index.html",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#1976d2",
+  "background_color": "#121212",
+  "theme_color": "#0f9d58",
   "orientation": "portrait",
-  "description": "Top trending products across mobiles, TVs, laptops and more.",
+  "description": "Discover top 10 trending smartphones with best deals updated regularly.",
   "icons": [
     {
       "src": "icon-192.png",
