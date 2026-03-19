@@ -1,11 +1,38 @@
-function renderCategory(category){
+const container = document.getElementById("scroll")
+
+/* 🔥 LOAD TOP 10 MOBILES */
+async function loadMobiles(){
+
+  container.innerHTML = "🔄 Loading deals..."
+
+  try{
+    const res = await fetch("mobiles.json")
+
+    if(!res.ok){
+      throw new Error("mobiles.json not found")
+    }
+
+    const data = await res.json()
+
+    container.innerHTML = ""
+
+    renderMobiles(data)
+
+  }catch(err){
+    container.innerHTML = "❌ Failed to load mobiles"
+    console.error(err)
+  }
+}
+
+/* 🔥 RENDER MOBILES */
+function renderMobiles(category){
 
   const section = document.createElement("div")
 
   let html = `
     <div class="category-title">🔥 Top 10 Trending Phones</div>
 
-    <!-- 🔥 TOP AD -->
+    <!-- 🔥 TOP GOOGLE AD -->
     <div class="google-ad">
       <ins class="adsbygoogle"
         style="display:block"
@@ -57,7 +84,7 @@ function renderCategory(category){
       </div>
     `
 
-    // 🔥 SECOND AD AFTER 5th ITEM
+    /* 🔥 SECOND AD AFTER 5th ITEM */
     if(index === 4){
       html += `
         </div>
@@ -83,9 +110,29 @@ function renderCategory(category){
   section.innerHTML = html
   container.appendChild(section)
 
-  // 🔥 LOAD ADS
+  /* 🔥 LOAD ADS AFTER RENDER */
   setTimeout(()=>{
-    (adsbygoogle = window.adsbygoogle || []).push({})
-    (adsbygoogle = window.adsbygoogle || []).push({})
+    try{
+      (adsbygoogle = window.adsbygoogle || []).push({})
+      (adsbygoogle = window.adsbygoogle || []).push({})
+    }catch(e){
+      console.log("Ads not loaded yet")
+    }
   }, 500)
 }
+
+/* 🔥 BUY BUTTON (AFFILIATE LINK) */
+function buyNow(name){
+
+  const url =
+    "https://www.amazon.in/s?k=" +
+    encodeURIComponent(name) +
+    "&tag=trendingpho05-21"
+
+  window.open(url, "_blank")
+}
+
+/* 🔥 START APP */
+document.addEventListener("DOMContentLoaded", ()=>{
+  loadMobiles()
+})
