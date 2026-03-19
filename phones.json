@@ -1,284 +1,40 @@
 {
-  "phones": [
+  "category": "Mobiles",
+  "items": [
     {
-      "name": "SamsungGalaxy S26 Ultra",
-      "image": "https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-s26-ultra-new.jpg"
+      "name": "iPhone 13",
+      "image": "https://images.unsplash.com/photo-1632661674596-618e0b1e0b2c",
+      "display": "6.1 inch OLED",
+      "camera": "12MP Dual",
+      "battery": "3240mAh"
     },
     {
-      "name": "XiaomiPoco X8 Pro Max",
-      "image": "https://fdn2.gsmarena.com/vv/bigpic/xiaomi-poco-x8-pro-max.jpg"
+      "name": "Samsung Galaxy S21",
+      "image": "https://images.unsplash.com/photo-1610945265064-0e34e5519bbf",
+      "display": "6.2 inch AMOLED",
+      "camera": "64MP",
+      "battery": "4000mAh"
     },
     {
-      "name": "XiaomiPoco X8 Pro",
-      "image": "https://fdn2.gsmarena.com/vv/bigpic/xiaomi-poco-x8-pro.jpg"
+      "name": "OnePlus 11",
+      "image": "https://images.unsplash.com/photo-1670272505340-d906d8d77f5c",
+      "display": "6.7 inch AMOLED",
+      "camera": "50MP",
+      "battery": "5000mAh"
     },
     {
-      "name": "SamsungGalaxy A56",
-      "image": "https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-a56-.jpg"
+      "name": "Redmi Note 12",
+      "image": "https://images.unsplash.com/photo-1664478546389-9f2c0e8bb7c1",
+      "display": "6.67 inch AMOLED",
+      "camera": "50MP",
+      "battery": "5000mAh"
     },
     {
-      "name": "Xiaomi17 Ultra",
-      "image": "https://fdn2.gsmarena.com/vv/bigpic/xiaomi-17-ultra-global.jpg"
-    },
-    {
-      "name": "SamsungGalaxy S26",
-      "image": "https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-s26.jpg"
-    },
-    {
-      "name": "AppleiPhone 17e",
-      "image": "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-17e.jpg"
-    },
-    {
-      "name": "NothingPhone (4a) Pro",
-      "image": "https://fdn2.gsmarena.com/vv/bigpic/nothing-phone-4a-pro.jpg"
-    },
-    {
-      "name": "AppleiPhone 17 Pro Max",
-      "image": "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-17-pro-max.jpg"
-    },
-    {
-      "name": "Xiaomi17",
-      "image": "https://fdn2.gsmarena.com/vv/bigpic/xiaomi-17.jpg"
-    },
-    {
-      "name": "SamsungGalaxy A17",
-      "image": "https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-a17-5g.jpg"
-    },
-    {
-      "name": "InfinixNote 60 Ultra",
-      "image": "https://fdn2.gsmarena.com/vv/bigpic/infinix-note60-ultra.jpg"
-    },
-    {
-      "name": "AppleiPhone 17",
-      "image": "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-17.jpg"
-    },
-    {
-      "name": "SamsungGalaxy A57",
-      "image": "https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-a56-.jpg"
-    },
-    {
-      "name": "vivoV70",
-      "image": "https://fdn2.gsmarena.com/vv/bigpic/vivo-v70.jpg"
-    },
-    {
-      "name": "XiaomiRedmi Note 15",
-      "image": "https://fdn2.gsmarena.com/vv/bigpic/xiaomi-redmi-note-15-global.jpg"
-    },
-    {
-      "name": "NothingPhone (4a)",
-      "image": "https://fdn2.gsmarena.com/vv/bigpic/nothing-phone-4a.jpg"
-    },
-    {
-      "name": "XiaomiRedmi Note 15 Pro",
-      "image": "https://fdn2.gsmarena.com/vv/bigpic/xiaomi-redmi-note-15-pro-global.jpg"
-    },
-    {
-      "name": "SamsungGalaxy S25 Ultra",
-      "image": "https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-s25-ultra-sm-s938.jpg"
-    },
-    {
-      "name": "MotorolaEdge 70 Fusion+",
-      "image": "https://fdn2.gsmarena.com/vv/bigpic/motorola-edge-70-fusion-plus.jpg"
-    },
-    {
-      "name": "InfinixNote 60 Pro",
-      "image": "https://fdn2.gsmarena.com/vv/bigpic/infinix-note60-pro.jpg"
-    },
-    {
-      "name": "OnePlus15",
-      "image": "https://fdn2.gsmarena.com/vv/bigpic/oneplus-15.jpg"
-    },
-    {
-      "name": "XiaomiPoco X7 Pro",
-      "image": "https://fdn2.gsmarena.com/vv/bigpic/xiaomi-poco-x7-pro.jpg"
-    },
-    {
-      "name": "vivoiQOO Z11x",
-      "image": "https://fdn2.gsmarena.com/vv/bigpic/vivo-iqoo-z11x.jpg"
-    },
-    {
-      "name": "SamsungGalaxy A36",
-      "image": "https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-a36.jpg"
-    },
-    {
-      "name": "SamsungGalaxy A07 4G",
-      "image": "https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-a07.jpg"
-    },
-    {
-      "name": "SamsungGalaxy S25 FE",
-      "image": "https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-s25-fe.jpg"
-    },
-    {
-      "name": "TecnoCamon 50 Pro",
-      "image": "https://fdn2.gsmarena.com/vv/bigpic/tecno-camon-50-pro.jpg"
-    },
-    {
-      "name": "AppleiPhone 13",
-      "image": "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13.jpg"
-    },
-    {
-      "name": "MotorolaEdge 70 Fusion",
-      "image": "https://fdn2.gsmarena.com/vv/bigpic/motorola-edge-70-fusion.jpg"
-    },
-    {
-      "name": "SamsungGalaxy S25",
-      "image": "https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-s25-sm-s931.jpg"
-    },
-    {
-      "name": "AppleiPhone 15",
-      "image": "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg"
-    },
-    {
-      "name": "XiaomiRedmi 15",
-      "image": "https://fdn2.gsmarena.com/vv/bigpic/xiaomi-redmi-15-5g.jpg"
-    },
-    {
-      "name": "XiaomiRedmi Note 15 Pro+",
-      "image": "https://fdn2.gsmarena.com/vv/bigpic/xiaomi-redmi-note-15-pro-plus-global.jpg"
-    },
-    {
-      "name": "SamsungGalaxy S24 Ultra",
-      "image": "https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-s24-ultra-5g-sm-s928-stylus.jpg"
-    },
-    {
-      "name": "AppleiPhone 17 Pro",
-      "image": "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-17-pro.jpg"
-    },
-    {
-      "name": "OppoFind N6",
-      "image": "https://fdn2.gsmarena.com/vv/bigpic/oppo-find-n6.jpg"
-    },
-    {
-      "name": "XiaomiRedmi Turbo 5 Max",
-      "image": "https://fdn2.gsmarena.com/vv/bigpic/xiaomi-redmi-turbo-5-max.jpg"
-    },
-    {
-      "name": "TecnoCamon 50 Ultra",
-      "image": "https://fdn2.gsmarena.com/vv/bigpic/tecno-camon-50-ultra.jpg"
-    },
-    {
-      "name": "SamsungGalaxy S26+",
-      "image": "https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-s26-plus.jpg"
-    },
-    {
-      "name": "OppoFind X9 Pro",
-      "image": "https://fdn2.gsmarena.com/vv/bigpic/oppo-find-x9-pro.jpg"
-    },
-    {
-      "name": "GooglePixel 10a",
-      "image": "https://fdn2.gsmarena.com/vv/bigpic/google-pixel-10a.jpg"
-    },
-    {
-      "name": "XiaomiPoco C85x",
-      "image": "https://fdn2.gsmarena.com/vv/bigpic/xiaomi-poco-c85x-.jpg"
-    },
-    {
-      "name": "Xiaomi17 Pro Max",
-      "image": "https://fdn2.gsmarena.com/vv/bigpic/xiaomi-17-pro-max.jpg"
-    },
-    {
-      "name": "HonorX9d",
-      "image": "https://fdn2.gsmarena.com/vv/bigpic/honor-x70.jpg"
-    },
-    {
-      "name": "SamsungGalaxy A26",
-      "image": "https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-a26.jpg"
-    },
-    {
-      "name": "XiaomiRedmi Note 14 Pro 5G",
-      "image": "https://fdn2.gsmarena.com/vv/bigpic/xiaomi-redmi-note-14-pro-5g-gl.jpg"
-    },
-    {
-      "name": "AppleiPhone 16",
-      "image": "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-16.jpg"
-    },
-    {
-      "name": "Honor600 Lite",
-      "image": "https://fdn2.gsmarena.com/vv/bigpic/honor-600-lite.jpg"
-    },
-    {
-      "name": "XiaomiPoco F7",
-      "image": "https://fdn2.gsmarena.com/vv/bigpic/xiaomi-poco-f7-new.jpg"
-    },
-    {
-      "name": "InfinixHot 60 Pro",
-      "image": "https://fdn2.gsmarena.com/vv/bigpic/infinix-hot-60-pro.jpg"
-    },
-    {
-      "name": "vivoX300 Pro",
-      "image": "https://fdn2.gsmarena.com/vv/bigpic/vivo-x300-pro.jpg"
-    },
-    {
-      "name": "AppleiPhone 16 Pro Max",
-      "image": "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-16-pro-max.jpg"
-    },
-    {
-      "name": "SamsungGalaxy S23 Ultra",
-      "image": "https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-s23-ultra-5g.jpg"
-    },
-    {
-      "name": "AppleiPhone 15 Pro Max",
-      "image": "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro-max.jpg"
-    },
-    {
-      "name": "XiaomiPoco F8 Ultra",
-      "image": "https://fdn2.gsmarena.com/vv/bigpic/xiaomi-poco-f8-ultra-.jpg"
-    },
-    {
-      "name": "SamsungGalaxy S24",
-      "image": "https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-s24-5g-sm-s921.jpg"
-    },
-    {
-      "name": "XiaomiRedmi Note 14 4G",
-      "image": "https://fdn2.gsmarena.com/vv/bigpic/xiaomi-redmi-note-14-4g-gl.jpg"
-    },
-    {
-      "name": "AppleiPhone 14 Pro Max",
-      "image": "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14-pro-max-.jpg"
-    },
-    {
-      "name": "OnePlus15R",
-      "image": "https://fdn2.gsmarena.com/vv/bigpic/oneplus-15r.jpg"
-    },
-    {
-      "name": "XiaomiRedmi 15C 4G",
-      "image": "https://fdn2.gsmarena.com/vv/bigpic/xiaomi-redmi-15c-4g.jpg"
-    },
-    {
-      "name": "InfinixGT 30 Pro",
-      "image": "https://fdn2.gsmarena.com/vv/bigpic/infinix-gt30-pro.jpg"
-    },
-    {
-      "name": "SamsungGalaxy A55",
-      "image": "https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-a55.jpg"
-    },
-    {
-      "name": "Xiaomi15T Pro",
-      "image": "https://fdn2.gsmarena.com/vv/bigpic/xiaomi-15t-pro.jpg"
-    },
-    {
-      "name": "SamsungGalaxy S22 Ultra 5G",
-      "image": "https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-s22-ultra-5g.jpg"
-    },
-    {
-      "name": "GooglePixel 10 Pro",
-      "image": "https://fdn2.gsmarena.com/vv/bigpic/google-pixel-10-pro-.jpg"
-    },
-    {
-      "name": "OppoReno15",
-      "image": "https://fdn2.gsmarena.com/vv/bigpic/oppo-reno15-global.jpg"
-    },
-    {
-      "name": "AppleiPhone 14 Pro",
-      "image": "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14-pro.jpg"
-    },
-    {
-      "name": "AppleiPhone 11",
-      "image": "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-11.jpg"
-    },
-    {
-      "name": "vivoiQOO 15R",
-      "image": "https://fdn2.gsmarena.com/vv/bigpic/vivo-iqoo-15r.jpg"
+      "name": "Realme Narzo 60",
+      "image": "https://images.unsplash.com/photo-1603899122634-3a9a7a1c4a3c",
+      "display": "6.6 inch IPS",
+      "camera": "64MP",
+      "battery": "5000mAh"
     }
   ]
 }
