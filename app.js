@@ -1,249 +1,98 @@
-let allPhones = []
-let currentPage = 1
-const phonesPerPage = 20
+const container = document.getElementById("scroll")
 
-/* NORMALIZE */
-function normalize(text){
-  return text.toLowerCase().replace(/[^a-z0-9]/g,"")
-}
+/* 🔥 LOAD ALL CATEGORIES */
+async function loadCategories(){
 
-/* LOAD PHONES */
-async function loadPhones(){
-
-  const container = document.getElementById("scroll")
-  container.innerHTML = "Loading phones..."
+  container.innerHTML = "Loading..."
 
   try{
-    const res = await fetch("phones.json")
+    const res = await fetch("categories.json")
 
     if(!res.ok){
-      throw new Error("phones.json not found")
+      throw new Error("categories.json not found")
     }
 
     const data = await res.json()
 
-    const clickData = JSON.parse(localStorage.getItem("clicks")) || {}
+    container.innerHTML = ""
 
-    allPhones = (data.phones || []).map(p=>{
-      const key = normalize(p.name)
-      return {
-        ...p,
-        clicks: clickData[key] || 0
+    // 🔥 LOOP ALL CATEGORIES
+    for(const cat of data.categories){
+
+      try{
+        const catRes = await fetch(cat.file)
+
+        if(!catRes.ok) continue
+
+        const catData = await catRes.json()
+
+        renderCategory(catData)
+
+      }catch(e){
+        console.log("Skip category:", cat.file)
       }
-    })
-
-  }catch(e){
-    console.error(e)
-
-    allPhones = [
-      { name: "iPhone 13", image: "https://via.placeholder.com/200" },
-      { name: "Samsung Galaxy S21", image: "https://via.placeholder.com/200" },
-      { name: "OnePlus 11", image: "https://via.placeholder.com/200" }
-    ]
-  }
-
-  showPage(1)
-}
-
-/* SAVE CLICK */
-function saveClick(name){
-
-  let data = JSON.parse(localStorage.getItem("clicks")) || {}
-
-  const key = normalize(name)
-  data[key] = (data[key] || 0) + 1
-
-  localStorage.setItem("clicks", JSON.stringify(data))
-}
-
-/* SHOW PAGE */
-function showPage(page){
-
-  currentPage = page
-
-  allPhones.sort((a,b)=>b.clicks - a.clicks)
-
-  const start = (page - 1) * phonesPerPage
-  const end = start + phonesPerPage
-
-  displayPhones(allPhones.slice(start, end))
-  renderPagination()
-}
-
-/* DISPLAY PHONES */
-function displayPhones(list){
-
-  const container = document.getElementById("scroll")
-  container.innerHTML = ""
-
-  list.forEach((phone,index)=>{
-
-    const battery = phone.battery || "5000mAh"
-    const camera = phone.camera || "64MP"
-    const display = phone.display || "6.5 inch AMOLED"
-    const processor = phone.processor || "Snapdragon"
-
-    const card = document.createElement("div")
-    card.className = index === 0 ? "scroll-card top-card" : "scroll-card"
-
-    let topBadge = ""
-    if(index === 0){
-      topBadge = `<div class="top-label">🔥 Most Popular</div>`
     }
 
-    card.innerHTML = `
-      ${topBadge}
+  }catch(err){
+    container.innerHTML = "❌ Failed to load categories"
+    console.error(err)
+  }
+}
 
-      <div class="phone-title">${phone.name}</div>
+/* 🔥 RENDER CATEGORY */
+function renderCategory(category){
 
-      <img class="main-img" src="${phone.image}">
+  const section = document.createElement("div")
 
-      <div class="spec-carousel">
-        <div class="spec-track">
+  section.innerHTML = `
+    <!-- 🔥 CATEGORY AD BANNER -->
+    <div class="category-banner">
+      <img src="https://source.unsplash.com/800x300/?${category.category}"
+           onerror="this.src='https://via.placeholder.com/800x200'">
+    </div>
 
-          <div class="spec-slide">
-            <p>📱 Display: ${display}</p>
-            <p>📷 Camera: ${camera}</p>
-            <p>🔋 Battery: ${battery}</p>
-          </div>
+    <!-- 🔥 TITLE -->
+    <div class="category-title">🔥 ${category.category}</div>
 
-          <div class="spec-slide">
-            <p>⚡ Processor: ${processor}</p>
-            <p>📦 Storage: 128GB</p>
-            <p>📅 Year: 2025</p>
-          </div>
+    <!-- 🔥 PRODUCTS ROW -->
+    <div class="category-row">
+
+      ${category.items.slice(0,5).map((item,index)=>`
+
+        <div class="card">
+
+          <img src="${item.image}"
+               onerror="this.src='https://via.placeholder.com/200'">
+
+          <div>${item.name}</div>
+
+          <button class="buy-btn"
+            onclick="buyNow('${item.name}')">
+            🛒 Buy
+          </button>
 
         </div>
 
-        <div class="dots">
-          <span class="dot active"></span>
-          <span class="dot"></span>
-        </div>
-      </div>
+      `).join("")}
 
-      <div class="buy-section">
-        <button class="buy-btn" data-name="${phone.name}">
-          🛒 Buy Now (Best Deal 🔥)
-        </button>
-      </div>
-    `
-
-    // ✅ SAFE CLICK HANDLER (NO BUGS)
-    const btn = card.querySelector(".buy-btn")
-    btn.addEventListener("click", (e)=>{
-      e.stopPropagation()
-      buyNow(phone)
-    })
-
-    container.appendChild(card)
-  })
-
-  setTimeout(initCarousel,300)
-}
-
-/* BUY AMAZON (SMART FALLBACK) */
-function buyNow(phone){
-
-  saveClick(phone.name)
-
-  let url = ""
-
-  if(phone.buyLink && phone.buyLink !== ""){
-    url = phone.buyLink
-  }else{
-    url = "https://www.amazon.in/s?k=" +
-          encodeURIComponent(phone.name) +
-          "&tag=trendingpho05-21"
-  }
-
-  // ✅ SAFE OPEN (NO BLOCK)
-  const a = document.createElement("a")
-  a.href = url
-  a.target = "_blank"
-  a.rel = "noopener noreferrer"
-  document.body.appendChild(a)
-  a.click()
-  a.remove()
-}
-
-/* CAROUSEL */
-function initCarousel(){
-
-  document.querySelectorAll(".spec-carousel").forEach(carousel=>{
-
-    let track = carousel.querySelector(".spec-track")
-    let dots = carousel.querySelectorAll(".dot")
-
-    let index = 0
-    let startX = 0
-
-    carousel.addEventListener("touchstart",e=>{
-      startX = e.touches[0].clientX
-    })
-
-    carousel.addEventListener("touchend",e=>{
-
-      let endX = e.changedTouches[0].clientX
-
-      if(startX - endX > 50) index = Math.min(index + 1, 1)
-      if(endX - startX > 50) index = Math.max(index - 1, 0)
-
-      track.style.transform = `translateX(-${index*100}%)`
-
-      dots.forEach(d=>d.classList.remove("active"))
-      dots[index].classList.add("active")
-    })
-  })
-}
-
-/* PAGINATION */
-function renderPagination(){
-
-  let totalPages = Math.ceil(allPhones.length / phonesPerPage)
-
-  let box = document.getElementById("pagination")
-
-  if(!box){
-    box = document.createElement("div")
-    box.id = "pagination"
-    box.style.textAlign = "center"
-    box.style.margin = "20px"
-    document.body.appendChild(box)
-  }
-
-  box.innerHTML = `
-    <button onclick="prevPage()" ${currentPage===1 ? "disabled" : ""}>⬅ Prev</button>
-    <span>Page ${currentPage} / ${totalPages}</span>
-    <button onclick="nextPage()" ${currentPage===totalPages ? "disabled" : ""}>Next ➡</button>
+    </div>
   `
+
+  container.appendChild(section)
 }
 
-function nextPage(){
-  if(currentPage < Math.ceil(allPhones.length / phonesPerPage)){
-    showPage(currentPage + 1)
-  }
+/* 🔥 BUY FUNCTION (AFFILIATE LINK) */
+function buyNow(name){
+
+  const url =
+    "https://www.amazon.in/s?k=" +
+    encodeURIComponent(name) +
+    "&tag=trendingpho05-21"
+
+  window.open(url, "_blank")
 }
 
-function prevPage(){
-  if(currentPage > 1){
-    showPage(currentPage - 1)
-  }
-}
-
-/* SEARCH */
-function searchPhones(){
-
-  const keyword = document.getElementById("search").value.trim()
-  if(keyword.length < 2) return
-
-  let results = allPhones.filter(p =>
-    normalize(p.name).includes(normalize(keyword))
-  )
-
-  displayPhones(results.slice(0,20))
-}
-
-/* START */
+/* 🔥 START APP */
 document.addEventListener("DOMContentLoaded", ()=>{
-  loadPhones()
+  loadCategories()
 })
