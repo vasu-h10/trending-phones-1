@@ -57,7 +57,7 @@ function renderCategory(category){
     <!-- 🔥 PRODUCTS ROW -->
     <div class="category-row">
 
-      ${category.items.slice(0,5).map((item,index)=>`
+      ${category.items.slice(0,10).map((item,index)=>`
 
         <div class="card">
 
