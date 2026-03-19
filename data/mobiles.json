@@ -3,37 +3,72 @@
   "items": [
     {
       "name": "iPhone 13",
-      "image": "https://images.unsplash.com/photo-1632661674596-618e0b1e0b2c",
+      "image": "iphone-13.jpg",
       "display": "6.1 inch OLED",
       "camera": "12MP Dual",
       "battery": "3240mAh"
     },
     {
       "name": "Samsung Galaxy S21",
-      "image": "https://images.unsplash.com/photo-1610945265064-0e34e5519bbf",
+      "image": "samsung-s21.jpg",
       "display": "6.2 inch AMOLED",
       "camera": "64MP",
       "battery": "4000mAh"
     },
     {
       "name": "OnePlus 11",
-      "image": "https://images.unsplash.com/photo-1670272505340-d906d8d77f5c",
+      "image": "oneplus-11.jpg",
       "display": "6.7 inch AMOLED",
       "camera": "50MP",
       "battery": "5000mAh"
     },
     {
       "name": "Redmi Note 12",
-      "image": "https://images.unsplash.com/photo-1664478546389-9f2c0e8bb7c1",
+      "image": "redmi-note12.jpg",
       "display": "6.67 inch AMOLED",
       "camera": "50MP",
       "battery": "5000mAh"
     },
     {
       "name": "Realme Narzo 60",
-      "image": "https://images.unsplash.com/photo-1603899122634-3a9a7a1c4a3c",
+      "image": "realme-narzo60.jpg",
       "display": "6.6 inch IPS",
       "camera": "64MP",
+      "battery": "5000mAh"
+    },
+    {
+      "name": "iQOO Neo 7",
+      "image": "iqoo-neo7.jpg",
+      "display": "6.78 inch AMOLED",
+      "camera": "64MP",
+      "battery": "5000mAh"
+    },
+    {
+      "name": "Samsung Galaxy A54",
+      "image": "samsung-a54.jpg",
+      "display": "6.4 inch AMOLED",
+      "camera": "50MP",
+      "battery": "5000mAh"
+    },
+    {
+      "name": "Nothing Phone 1",
+      "image": "nothing-phone1.jpg",
+      "display": "6.55 inch OLED",
+      "camera": "50MP Dual",
+      "battery": "4500mAh"
+    },
+    {
+      "name": "Motorola Edge 40",
+      "image": "motorola-edge40.jpg",
+      "display": "6.55 inch OLED",
+      "camera": "50MP",
+      "battery": "4400mAh"
+    },
+    {
+      "name": "Poco X5 Pro",
+      "image": "poco-x5pro.jpg",
+      "display": "6.67 inch AMOLED",
+      "camera": "108MP",
       "battery": "5000mAh"
     }
   ]
