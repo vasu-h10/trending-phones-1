@@ -1,0 +1,40 @@
+{
+  "category": "Washing Machines",
+  "items": [
+    {
+      "name": "LG 7kg Front Load",
+      "image": "https://images.unsplash.com/photo-1581578731548-c64695cc6952",
+      "type": "Front Load",
+      "capacity": "7 Kg",
+      "rating": "5 Star"
+    },
+    {
+      "name": "Samsung 6.5kg Top Load",
+      "image": "https://images.unsplash.com/photo-1626806787461-102c1bfaaea1",
+      "type": "Top Load",
+      "capacity": "6.5 Kg",
+      "rating": "4 Star"
+    },
+    {
+      "name": "Whirlpool 7kg",
+      "image": "https://images.unsplash.com/photo-1604335399105-a0c585fd81a9",
+      "type": "Top Load",
+      "capacity": "7 Kg",
+      "rating": "4 Star"
+    },
+    {
+      "name": "IFB 6kg Front Load",
+      "image": "https://images.unsplash.com/photo-1591030434469-7c02c5c2b3b3",
+      "type": "Front Load",
+      "capacity": "6 Kg",
+      "rating": "5 Star"
+    },
+    {
+      "name": "Bosch 7kg Front Load",
+      "image": "https://images.unsplash.com/photo-1610552050890-fe99536c2614",
+      "type": "Front Load",
+      "capacity": "7 Kg",
+      "rating": "5 Star"
+    }
+  ]
+}
