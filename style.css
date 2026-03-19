@@ -73,7 +73,7 @@ body.dark .app-bar{
 .card{
   background:#fff;
   border-radius:16px;
-  padding:30px 14px 14px; /* 🔥 more top space */
+  padding:30px 14px 14px;
   box-shadow:0 6px 18px rgba(0,0,0,0.08);
   transition:0.25s;
 
@@ -94,10 +94,10 @@ body.dark .card{
   transform:translateY(-2px);
 }
 
-/* 🔥 IMAGE */
+/* 🔥 IMAGE (UPDATED 🔥) */
 .card img{
-  width:100%;
-  max-width:260px;
+  width:80%;          /* ✅ reduced */
+  max-width:200px;    /* ✅ smaller */
   height:auto;
   object-fit:contain;
   margin-bottom:10px;
@@ -124,13 +124,13 @@ body.dark .card{
   margin:5px 0;
 }
 
-/* 🔥 🔴 CIRCLE BADGE (IMPROVED) */
+/* 🔥 🔴 CIRCLE BADGE */
 .top-badge{
   position:absolute;
   top:12px;
   left:12px;
 
-  width:60px;   /* 🔥 slightly bigger */
+  width:60px;
   height:60px;
 
   background:linear-gradient(135deg,#ff9800,#ff5722);
@@ -142,12 +142,12 @@ body.dark .card{
   align-items:center;
   justify-content:center;
 
-  font-size:13px; /* 🔥 better readability */
+  font-size:13px;
   font-weight:bold;
 
   text-align:center;
   line-height:1.2;
-  padding:6px; /* 🔥 prevents text touching edges */
+  padding:6px;
 
   box-shadow:0 4px 12px rgba(0,0,0,0.25);
 
