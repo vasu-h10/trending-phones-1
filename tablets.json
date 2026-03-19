@@ -1,0 +1,35 @@
+{
+  "category": "Tablets",
+  "items": [
+    {
+      "name": "iPad 9th Gen",
+      "image": "https://images.unsplash.com/photo-1587829741301-dc798b83add3",
+      "display": "10.2 inch",
+      "battery": "10 hrs"
+    },
+    {
+      "name": "Samsung Tab A8",
+      "image": "https://images.unsplash.com/photo-1542751110-97427bbecf20",
+      "display": "10.5 inch",
+      "battery": "12 hrs"
+    },
+    {
+      "name": "Lenovo Tab M10",
+      "image": "https://images.unsplash.com/photo-1609081219090-a6d81d3085bf",
+      "display": "10.3 inch",
+      "battery": "10 hrs"
+    },
+    {
+      "name": "Realme Pad",
+      "image": "https://images.unsplash.com/photo-1593642532973-d31b6557fa68",
+      "display": "10.4 inch",
+      "battery": "12 hrs"
+    },
+    {
+      "name": "Xiaomi Pad 5",
+      "image": "https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04",
+      "display": "11 inch",
+      "battery": "14 hrs"
+    }
+  ]
+}
