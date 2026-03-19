@@ -1,0 +1,40 @@
+{
+  "category": "Air Conditioners",
+  "items": [
+    {
+      "name": "Voltas 1.5 Ton Split AC",
+      "image": "https://images.unsplash.com/photo-1581579188871-45ea61f2a1a9",
+      "capacity": "1.5 Ton",
+      "type": "Split AC",
+      "rating": "3 Star"
+    },
+    {
+      "name": "LG 1.5 Ton Dual Inverter",
+      "image": "https://images.unsplash.com/photo-1592928303261-4f3d3b8c6d43",
+      "capacity": "1.5 Ton",
+      "type": "Inverter AC",
+      "rating": "5 Star"
+    },
+    {
+      "name": "Daikin 1 Ton AC",
+      "image": "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2",
+      "capacity": "1 Ton",
+      "type": "Split AC",
+      "rating": "4 Star"
+    },
+    {
+      "name": "Blue Star 1.5 Ton",
+      "image": "https://images.unsplash.com/photo-1581093450021-4a7360e9a6b6",
+      "capacity": "1.5 Ton",
+      "type": "Split AC",
+      "rating": "3 Star"
+    },
+    {
+      "name": "Hitachi 1.5 Ton AC",
+      "image": "https://images.unsplash.com/photo-1581093588401-22d07d1f0f42",
+      "capacity": "1.5 Ton",
+      "type": "Inverter AC",
+      "rating": "5 Star"
+    }
+  ]
+}
