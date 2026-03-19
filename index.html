@@ -3,22 +3,49 @@
 
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Cashback OnTrack</title>
+<title>Top 10 Trending Phones</title>
 
 <link rel="stylesheet" href="style.css">
+<link rel="manifest" href="manifest.json">
+
+<meta name="theme-color" content="#0f9d58">
+
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+
+<!-- 🔥 Google AdSense -->
+<script async
+src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2594728028551012"
+crossorigin="anonymous"></script>
 
 </head>
 
 <body>
 
-<!-- 🔥 TRENDING BANNER -->
+<!-- 🔥 APP BANNER -->
 <div class="main-banner">
-  <img src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da">
+  <img src="banner.jpg"
+       onerror="this.src='https://via.placeholder.com/800x200?text=Top+10+Deals'"
+       alt="Top Deals Banner">
 </div>
 
-<h2 style="padding:10px;">🔥 Trending Deals</h2>
+<!-- 🔥 APP BAR -->
+<div class="app-bar">
 
-<!-- 🔥 ALL CATEGORIES -->
+  <div>🔥 Deals</div>
+
+  <div class="app-actions">
+    <button onclick="toggleDark()">🌙</button>
+    <button>🎟</button>
+    <button>👤</button>
+  </div>
+
+</div>
+
+<!-- 🔥 MAIN CONTENT -->
 <div id="scroll"></div>
 
 <!-- 🔥 FOOTER -->
@@ -32,12 +59,19 @@
   </div>
 
   <div class="footer-copy">
-    © 2026 Cashback OnTrack
+    © 2026 Trending Phones Deals
   </div>
 
 </footer>
 
 <script src="app.js"></script>
+
+<!-- 🔥 DARK MODE SCRIPT -->
+<script>
+function toggleDark(){
+  document.body.classList.toggle("dark")
+}
+</script>
 
 </body>
 </html>
