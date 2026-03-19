@@ -12,11 +12,38 @@ body.dark{
 }
 
 /* 🔥 APP BANNER */
+.main-banner{
+  position:relative;
+}
+
 .main-banner img{
   width:100%;
   height:170px;
   object-fit:cover;
   border-radius:12px;
+}
+
+/* 🔥 BANNER TEXT */
+.banner-text{
+  position:absolute;
+  top:50%;
+  left:20px;
+  transform:translateY(-50%);
+  font-family:'Great Vibes', cursive;
+  font-size:36px;
+  color:white;
+
+  text-shadow:
+    0 0 10px #fff,
+    0 0 20px #00e676,
+    0 0 40px #00e676;
+
+  animation:glow 2s infinite alternate;
+}
+
+@keyframes glow{
+  from{opacity:0.7;}
+  to{opacity:1;}
 }
 
 /* 🔥 APP BAR */
@@ -60,7 +87,7 @@ body.dark .app-actions button{
 /* 🔥 VERTICAL LIST */
 .category-row{
   display:flex;
-  flex-direction:column; /* 🔥 KEY CHANGE */
+  flex-direction:column;
   gap:15px;
   padding:10px;
 }
@@ -68,7 +95,7 @@ body.dark .app-actions button{
 /* 🔥 CARD */
 .card{
   width:100%;
-  display:flex; /* 🔥 horizontal layout inside card */
+  display:flex;
   align-items:center;
   gap:12px;
   background:#fff;
@@ -88,7 +115,7 @@ body.dark .card{
   transform:translateY(-3px);
 }
 
-/* 🔥 IMAGE (LEFT SIDE) */
+/* 🔥 IMAGE */
 .card img{
   width:110px;
   height:110px;
@@ -96,7 +123,7 @@ body.dark .card{
   border-radius:10px;
 }
 
-/* 🔥 CONTENT (RIGHT SIDE) */
+/* 🔥 CONTENT */
 .card-content{
   flex:1;
 }
@@ -114,10 +141,38 @@ body.dark .card{
   font-weight:bold;
 }
 
-/* 🥇 TOP 1 */
+/* 🥇 TOP 1 WITH GIF */
 .top1{
   border:2px solid gold;
   box-shadow:0 8px 25px rgba(255,215,0,0.4);
+
+  background-image:url("https://raw.githubusercontent.com/vasu-h10/trending-phones-1/main/celebration.gif");
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+}
+
+/* 🔥 DARK OVERLAY */
+.top1::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,0.45);
+  border-radius:14px;
+  z-index:0;
+}
+
+/* 🔥 KEEP CONTENT ABOVE */
+.top1 *{
+  position:relative;
+  z-index:1;
+}
+
+/* 🔥 IMAGE FIX */
+.top1 img{
+  background:#fff;
+  padding:5px;
+  border-radius:10px;
 }
 
 /* 🥈🥉 */
