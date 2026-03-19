@@ -33,11 +33,9 @@ body.dark{
   font-family:'Great Vibes', cursive;
   font-size:34px;
   color:white;
-
   text-shadow:
     0 0 8px #fff,
     0 0 15px #00e676;
-
   animation:glow 2s infinite alternate;
 }
 
@@ -63,13 +61,6 @@ body.dark .app-bar{
   background:#1e1e1e;
 }
 
-/* 🔥 CATEGORY */
-.category-title{
-  padding:12px;
-  font-weight:bold;
-  font-size:18px;
-}
-
 /* 🔥 LIST */
 .category-row{
   display:flex;
@@ -78,7 +69,7 @@ body.dark .app-bar{
   padding:10px;
 }
 
-/* 🔥 CARD (UPDATED - VERTICAL STYLE) */
+/* 🔥 CARD */
 .card{
   background:#fff;
   border-radius:16px;
@@ -100,13 +91,15 @@ body.dark .card{
   transform:translateY(-2px);
 }
 
-/* 🔥 IMAGE (FULL PREVIEW STYLE) */
+/* 🔥 IMAGE */
 .card img{
   width:100%;
   max-width:220px;
   height:auto;
   object-fit:contain;
   margin-bottom:10px;
+  position:relative;
+  z-index:2; /* ✅ image below badge */
 }
 
 /* 🔥 CONTENT */
@@ -116,6 +109,8 @@ body.dark .card{
   flex-direction:column;
   align-items:center;
   gap:6px;
+  position:relative;
+  z-index:2;
 }
 
 /* 🔥 TITLE */
@@ -124,17 +119,19 @@ body.dark .card{
   margin:5px 0;
 }
 
-/* 🔥 BADGE */
+/* 🔥 BADGE (FIXED) */
 .top-badge{
   position:absolute;
   top:10px;
-  left:10px;
+  left:50%;
+  transform:translateX(-50%);
   background:linear-gradient(90deg,#ff9800,#ff5722);
   color:#fff;
   font-size:11px;
-  padding:4px 8px;
+  padding:4px 10px;
   border-radius:6px;
   font-weight:bold;
+  z-index:5; /* ✅ always on top */
 }
 
 /* 🥇 TOP 1 */
@@ -144,6 +141,7 @@ body.dark .card{
   overflow:hidden;
 }
 
+/* BACKGROUND EFFECT */
 .top1::before{
   content:"";
   position:absolute;
@@ -154,10 +152,12 @@ body.dark .card{
   z-index:0;
 }
 
+/* ❌ REMOVE THIS (IMPORTANT FIX)
 .top1 *{
   position:relative;
   z-index:1;
 }
+*/
 
 /* 🥈🥉 */
 .top2, .top3{
