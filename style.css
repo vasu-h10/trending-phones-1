@@ -57,26 +57,24 @@ body.dark .app-actions button{
   font-size:18px;
 }
 
-/* 🔥 SCROLL */
+/* 🔥 VERTICAL LIST */
 .category-row{
   display:flex;
-  overflow-x:auto;
-  gap:12px;
+  flex-direction:column; /* 🔥 KEY CHANGE */
+  gap:15px;
   padding:10px;
-}
-
-.category-row::-webkit-scrollbar{
-  display:none;
 }
 
 /* 🔥 CARD */
 .card{
-  min-width:170px;
+  width:100%;
+  display:flex; /* 🔥 horizontal layout inside card */
+  align-items:center;
+  gap:12px;
   background:#fff;
   border-radius:14px;
   padding:12px;
   box-shadow:0 4px 12px rgba(0,0,0,0.1);
-  text-align:center;
   position:relative;
   transition:0.3s;
 }
@@ -85,17 +83,22 @@ body.dark .card{
   background:#1e1e1e;
 }
 
-/* 🔥 HOVER EFFECT */
+/* 🔥 HOVER */
 .card:hover{
-  transform:translateY(-4px);
+  transform:translateY(-3px);
 }
 
-/* 🔥 IMAGE */
+/* 🔥 IMAGE (LEFT SIDE) */
 .card img{
-  width:100%;
-  height:160px;
+  width:110px;
+  height:110px;
   object-fit:contain;
   border-radius:10px;
+}
+
+/* 🔥 CONTENT (RIGHT SIDE) */
+.card-content{
+  flex:1;
 }
 
 /* 🔥 TOP BADGE */
