@@ -52,12 +52,24 @@ function renderMobiles(category){
       extraClass = "top3";
     }
 
+    /* 🔥 AUTO ADD AFFILIATE TAG */
+    let affLink = item.link;
+
+    if(affLink && affLink.includes("amazon.in")){
+      if(!affLink.includes("tag=")){
+        affLink = affLink.includes("?")
+          ? affLink + "&tag=trendingpho05-21"
+          : affLink + "?tag=trendingpho05-21";
+      }
+    }
+
     html += `
       <div class="card ${extraClass}">
 
         ${badge ? `<div class="top-badge">${badge}</div>` : ""}
 
         <img src="${item.image}"
+             alt="${item.name}"
              onerror="this.src='https://via.placeholder.com/200'">
 
         <div class="card-content">
@@ -65,7 +77,7 @@ function renderMobiles(category){
 
           ${item.desc ? `<p class="desc">${item.desc}</p>` : ""}
 
-          <a href="${item.link}" target="_blank">
+          <a href="${affLink}" target="_blank" rel="nofollow sponsored">
             <button class="buy-btn">🛒 Get Best Deal</button>
           </a>
         </div>
