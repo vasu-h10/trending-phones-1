@@ -52,8 +52,8 @@ function renderMobiles(category){
       extraClass = "top3";
     }
 
-    /* 🔥 SIMPLE & SAFE LINK (NO ISSUE VERSION) */
-    let affLink = "https://www.amazon.in/s?k=" +
+    /* 🔥 SAFE AMAZON SEARCH LINK */
+    let link = "https://www.amazon.in/s?k=" +
       encodeURIComponent(item.name);
 
     html += `
@@ -75,7 +75,7 @@ function renderMobiles(category){
             <span>🔋 ${item.battery}</span>
           </div>
 
-          <a href="${affLink}" target="_blank">
+          <a href="${link}" target="_blank" rel="noopener">
             <button class="buy-btn">🔍 View on Amazon</button>
           </a>
 
