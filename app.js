@@ -52,15 +52,15 @@ function renderMobiles(category){
     let extraClass = ""
 
     if(index === 0){
-      badge = "🥇 #1 BEST DEAL"
+      badge = "🥇#1"
       extraClass = "top1"
     }
     else if(index === 1){
-      badge = "🥈 #2 HOT PICK"
+      badge = "🥈#2"
       extraClass = "top2"
     }
     else if(index === 2){
-      badge = "🥉 #3 VALUE"
+      badge = "🥉#3"
       extraClass = "top3"
     }
 
