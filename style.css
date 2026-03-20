@@ -302,3 +302,15 @@ body.dark .footer-copy{
 body.dark .note{
   color:#aaa;
 }
+
+.category-title{
+  font-size:18px;
+  font-weight:bold;
+  text-align:center;
+  margin:10px 0;
+  color:#111;
+}
+
+body.dark .category-title{
+  color:#fff;
+}
