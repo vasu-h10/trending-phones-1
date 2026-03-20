@@ -52,10 +52,15 @@ function renderMobiles(category){
       extraClass = "top3";
     }
 
-    /* 🔥 AUTO ADD AFFILIATE TAG */
+    /* 🔥 SAFE AFFILIATE LINK */
     let affLink = item.link;
 
-    if(affLink && affLink.includes("amazon.in")){
+    if(!affLink){
+      affLink = "https://www.amazon.in/s?k=" +
+        encodeURIComponent(item.name) +
+        "&tag=trendingpho05-21";
+    }
+    else if(affLink.includes("amazon.in")){
       if(!affLink.includes("tag=")){
         affLink = affLink.includes("?")
           ? affLink + "&tag=trendingpho05-21"
@@ -75,7 +80,12 @@ function renderMobiles(category){
         <div class="card-content">
           <h3>${item.name}</h3>
 
-          ${item.desc ? `<p class="desc">${item.desc}</p>` : ""}
+          <!-- 🔥 SPECS -->
+          <div class="specs">
+            <span>📱 ${item.display}</span>
+            <span>📷 ${item.camera}</span>
+            <span>🔋 ${item.battery}</span>
+          </div>
 
           <a href="${affLink}" target="_blank" rel="nofollow sponsored">
             <button class="buy-btn">🛒 Get Best Deal</button>
