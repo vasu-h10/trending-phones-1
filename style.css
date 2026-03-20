@@ -55,15 +55,15 @@ body.dark{
   line-height:1.6;
 }
 
-/* ✅ CLEAN TEXT STYLE (FIXED) */
+/* ✅ NORMAL TEXT */
 .content-box p{
   color:#444;
   line-height:1.7;
 }
 
-/* 🔥 ONLY SLIGHT HIGHLIGHT (NOT TOO GREEN) */
-.content-box p:first-of-type{
-  color:#2e7d32; /* softer professional green */
+/* ✅ HIGHLIGHT TEXT (FIXED METHOD) */
+.content-box .highlight{
+  color:#2e7d32;
   font-weight:500;
 }
 
@@ -82,7 +82,7 @@ body.dark .content-box p{
   color:#bbb;
 }
 
-body.dark .content-box p:first-of-type{
+body.dark .content-box .highlight{
   color:#66bb6a;
 }
 
