@@ -124,32 +124,20 @@ body.dark .card{
   margin:5px 0;
 }
 
-/* 🔥 🔴 CIRCLE BADGE */
+/* 🔥 ✅ SIMPLE EMOJI BADGE (NO CIRCLE) */
 .top-badge{
   position:absolute;
-  top:12px;
-  left:12px;
+  top:10px;
+  left:10px;
 
-  width:60px;
-  height:60px;
+  font-size:28px;   /* 🔥 bigger emoji */
 
-  background:linear-gradient(135deg,#ff9800,#ff5722);
-  color:#fff;
+  background:none;
+  box-shadow:none;
+  border:none;
 
-  border-radius:50%;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  font-size:13px;
-  font-weight:bold;
-
-  text-align:center;
-  line-height:1.2;
-  padding:6px;
-
-  box-shadow:0 4px 12px rgba(0,0,0,0.25);
+  padding:0;
+  line-height:1;
 
   z-index:10;
 }
@@ -199,7 +187,7 @@ body.dark .card{
   background:#fff;
   border-radius:12px;
   text-align:center;
-  min-height:0; /* ✅ FIX: remove empty space */
+  min-height:0;
 }
 
 /* 🔥 AUTO HIDE EMPTY AD */
