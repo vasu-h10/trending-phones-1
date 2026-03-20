@@ -65,9 +65,11 @@ body.dark{
 .content-box .highlight{
   color:#2e7d32;
   font-weight:700;
-  border-left:4px solid #2e7d32;
-  padding-left:10px;
+  background:rgba(46,125,50,0.08);
+  padding:6px 8px;
+  border-radius:6px;
 }
+
 
 /* 🔥 HEADINGS */
 .content-box h2{
