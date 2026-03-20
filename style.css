@@ -45,7 +45,7 @@ body.dark{
   to{opacity:1;}
 }
 
-/* 🔥 CONTENT BOX (CENTERED + PREMIUM) */
+/* 🔥 CONTENT BOX */
 .content-box{
   background:#fff;
   margin:15px auto;
@@ -57,13 +57,13 @@ body.dark{
   box-shadow:0 4px 12px rgba(0,0,0,0.05);
 }
 
-/* ✅ NORMAL TEXT */
+/* TEXT */
 .content-box p{
   color:#444;
   line-height:1.7;
 }
 
-/* ✅ HIGHLIGHT TEXT */
+/* HIGHLIGHT */
 .content-box .highlight{
   color:#2e7d32;
   font-weight:700;
@@ -73,13 +73,13 @@ body.dark{
   margin-bottom:8px;
 }
 
-/* 🔥 HEADINGS */
+/* HEADINGS */
 .content-box h2{
   color:#111;
   margin-bottom:8px;
 }
 
-/* 🌙 DARK MODE */
+/* DARK MODE CONTENT */
 body.dark .content-box{
   background:#1e1e1e;
 }
@@ -130,7 +130,7 @@ body.dark .card{
   transform:translateY(-2px);
 }
 
-/* 🔥 IMAGE */
+/* IMAGE */
 .card img{
   width:80%;
   max-width:200px;
@@ -139,7 +139,7 @@ body.dark .card{
   margin-bottom:10px;
 }
 
-/* 🔥 CONTENT */
+/* CONTENT */
 .card-content{
   width:100%;
   display:flex;
@@ -148,7 +148,7 @@ body.dark .card{
   gap:6px;
 }
 
-/* 🔥 TITLE */
+/* TITLE */
 .card-content h3{
   font-size:16px;
   margin:5px 0;
@@ -159,7 +159,7 @@ body.dark .card-content h3{
   color:#fff;
 }
 
-/* 🔥 BADGE */
+/* BADGE */
 .top-badge{
   position:absolute;
   top:6px;
@@ -168,19 +168,24 @@ body.dark .card-content h3{
   filter:drop-shadow(0 4px 6px rgba(0,0,0,0.3));
 }
 
-/* 🥇 TOP 1 */
+/* 🥇 TOP 1 (UPDATED 🔥) */
 .top1{
   border:2px solid gold;
-  box-shadow:0 8px 25px rgba(255,215,0,0.3);
+  box-shadow:
+    0 8px 25px rgba(255,215,0,0.4),
+    0 0 12px rgba(255,215,0,0.6);
 }
 
 .top1::before{
   content:"";
   position:absolute;
   inset:0;
-  background:url("https://raw.githubusercontent.com/vasu-h10/trending-phones-1/main/celebration.gif");
+  background:
+    linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.25)),
+    url("https://raw.githubusercontent.com/vasu-h10/trending-phones-1/main/celebration.gif");
   background-size:cover;
-  opacity:0.12;
+  opacity:0.35; /* 🔥 FIXED (visible + balanced) */
+  z-index:0;
 }
 
 /* 🥈🥉 */
@@ -188,7 +193,7 @@ body.dark .card-content h3{
   border:2px solid #ddd;
 }
 
-/* 🔥 BUTTON (IMPROVED UX) */
+/* BUTTON */
 .buy-btn{
   background:linear-gradient(90deg,#ff7a00,#ff3d00);
   border:none;
@@ -206,7 +211,7 @@ body.dark .card-content h3{
   transform:scale(1.05);
 }
 
-/* 🔥 GOOGLE AD */
+/* GOOGLE AD */
 .google-ad{
   margin:15px 10px;
   padding:10px;
@@ -224,7 +229,7 @@ body.dark .google-ad{
   background:#1e1e1e;
 }
 
-/* 🔥 FOOTER */
+/* FOOTER */
 .app-footer{
   background:#fff;
   margin-top:40px;
