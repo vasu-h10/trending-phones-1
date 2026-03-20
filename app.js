@@ -52,21 +52,9 @@ function renderMobiles(category){
       extraClass = "top3";
     }
 
-    /* 🔥 SAFE AFFILIATE LINK */
-    let affLink = item.link;
-
-    if(!affLink){
-      affLink = "https://www.amazon.in/s?k=" +
-        encodeURIComponent(item.name) +
-        "&tag=trendingpho05-21";
-    }
-    else if(affLink.includes("amazon.in")){
-      if(!affLink.includes("tag=")){
-        affLink = affLink.includes("?")
-          ? affLink + "&tag=trendingpho05-21"
-          : affLink + "?tag=trendingpho05-21";
-      }
-    }
+    /* 🔥 SIMPLE & SAFE LINK (NO ISSUE VERSION) */
+    let affLink = "https://www.amazon.in/s?k=" +
+      encodeURIComponent(item.name);
 
     html += `
       <div class="card ${extraClass}">
@@ -87,9 +75,14 @@ function renderMobiles(category){
             <span>🔋 ${item.battery}</span>
           </div>
 
-          <a href="${affLink}" target="_blank" rel="nofollow sponsored">
-            <button class="buy-btn">🛒 Get Best Deal</button>
+          <a href="${affLink}" target="_blank">
+            <button class="buy-btn">🔍 View on Amazon</button>
           </a>
+
+          <p class="note">
+            Prices & variants may vary on Amazon
+          </p>
+
         </div>
 
       </div>
