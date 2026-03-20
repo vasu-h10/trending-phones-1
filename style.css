@@ -159,6 +159,29 @@ body.dark .card-content h3{
   color:#fff;
 }
 
+/* 🔥 SPECS (NEW 🔥) */
+.specs{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:6px;
+  margin:6px 0;
+}
+
+.specs span{
+  font-size:12px;
+  background:#e8f5e9;
+  color:#2e7d32;
+  padding:4px 8px;
+  border-radius:20px;
+  font-weight:500;
+}
+
+body.dark .specs span{
+  background:#333;
+  color:#66bb6a;
+}
+
 /* BADGE */
 .top-badge{
   position:absolute;
@@ -168,7 +191,7 @@ body.dark .card-content h3{
   filter:drop-shadow(0 4px 6px rgba(0,0,0,0.3));
 }
 
-/* 🥇 TOP 1 (UPDATED 🔥) */
+/* 🥇 TOP 1 */
 .top1{
   border:2px solid gold;
   box-shadow:
@@ -184,7 +207,7 @@ body.dark .card-content h3{
     linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.25)),
     url("https://raw.githubusercontent.com/vasu-h10/trending-phones-1/main/celebration.gif");
   background-size:cover;
-  opacity:0.35; /* 🔥 FIXED (visible + balanced) */
+  opacity:0.35;
   z-index:0;
 }
 
