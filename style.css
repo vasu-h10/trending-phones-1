@@ -64,7 +64,9 @@ body.dark{
 /* ✅ HIGHLIGHT TEXT (FIXED METHOD) */
 .content-box .highlight{
   color:#2e7d32;
-  font-weight:500;
+  font-weight:700;
+  border-left:4px solid #2e7d32;
+  padding-left:10px;
 }
 
 /* 🔥 HEADINGS */
