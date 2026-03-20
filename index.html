@@ -8,7 +8,7 @@
 
 <title>Top 10 Trending Phones</title>
 
-<link rel="stylesheet" href="style.css?v=3">
+<link rel="stylesheet" href="style.css?v=4">
 <link rel="manifest" href="manifest.json">
 
 <meta name="theme-color" content="#0f9d58">
@@ -51,7 +51,7 @@ crossorigin="anonymous"></script>
     this guide helps you find the perfect option with the best deals available online.
   </p>
 
-  <!-- 🔥 IMPORTANT (AdSense + Affiliate) -->
+  <!-- 🔥 AFFILIATE DISCLOSURE (IMPORTANT) -->
   <p class="highlight">
     This website contains affiliate links. We may earn a commission when you purchase
     through our links at no extra cost to you.
@@ -92,6 +92,7 @@ crossorigin="anonymous"></script>
 <footer class="app-footer">
 
   <div class="footer-links">
+    <a href="index.html">Home</a>
     <a href="privacy.html">Privacy Policy</a>
     <a href="terms.html">Terms & Conditions</a>
     <a href="about.html">About Us</a>
@@ -107,9 +108,15 @@ crossorigin="anonymous"></script>
 
 <script src="app.js" defer></script>
 
-<!-- ✅ Ad Load -->
+<!-- ✅ SAFE AD LOAD -->
 <script>
-(adsbygoogle = window.adsbygoogle || []).push({});
+window.addEventListener("load", function(){
+  try{
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  }catch(e){
+    console.log("Ad not loaded yet");
+  }
+});
 </script>
 
 </body>
