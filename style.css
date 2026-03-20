@@ -73,7 +73,7 @@ body.dark .app-bar{
 .card{
   background:#fff;
   border-radius:16px;
-  padding:30px 14px 14px;
+  padding:45px 14px 14px; /* 🔥 increased for big emoji */
   box-shadow:0 6px 18px rgba(0,0,0,0.08);
   transition:0.25s;
 
@@ -124,20 +124,21 @@ body.dark .card{
   margin:5px 0;
 }
 
-/* 🔥 ✅ SIMPLE EMOJI BADGE (NO CIRCLE) */
+/* 🔥 🔥 BIG EMOJI BADGE */
 .top-badge{
   position:absolute;
-  top:10px;
-  left:10px;
+  top:6px;
+  left:6px;
 
-  font-size:28px;   /* 🔥 bigger emoji */
+  font-size:42px;   /* 🔥 BIG */
+
+  line-height:1;
+  padding:0;
 
   background:none;
-  box-shadow:none;
   border:none;
 
-  padding:0;
-  line-height:1;
+  filter:drop-shadow(0 4px 6px rgba(0,0,0,0.3)); /* 🔥 glow */
 
   z-index:10;
 }
