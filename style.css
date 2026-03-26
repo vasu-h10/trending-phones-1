@@ -1,316 +1,235 @@
 /* 🔥 GLOBAL */
 body{
-  font-family:Arial,sans-serif;
-  margin:0;
-  background:#f2f2f2;
-  color:#222;
+font-family:Arial,sans-serif;
+margin:0;
+background:#f2f2f2;
+color:#222;
 }
 
 /* 🔥 DARK MODE */
 body.dark{
-  background:#121212;
-  color:#eee;
+background:#121212;
+color:#eee;
 }
 
 /* 🔥 APP BANNER */
 .main-banner{
-  position:relative;
-  padding:10px;
+position:relative;
+padding:10px;
 }
 
 .main-banner img{
-  width:100%;
-  height:170px;
-  object-fit:cover;
-  border-radius:12px;
+width:100%;
+height:170px;
+object-fit:cover;
+border-radius:12px;
 }
 
 /* 🔥 BANNER TEXT */
 .banner-text{
-  position:absolute;
-  top:50%;
-  left:20px;
-  transform:translateY(-50%);
-  font-family:'Great Vibes', cursive;
-  font-size:34px;
-  color:white;
-  text-shadow:
-    0 0 8px #fff,
-    0 0 15px #00e676;
-  animation:glow 2s infinite alternate;
+position:absolute;
+top:50%;
+left:20px;
+transform:translateY(-50%);
+font-family:'Great Vibes', cursive;
+font-size:34px;
+color:white;
+text-shadow:
+0 0 8px #fff,
+0 0 15px #00e676;
+animation:glow 2s infinite alternate;
+z-index:2;
 }
 
 @keyframes glow{
-  from{opacity:0.7;}
-  to{opacity:1;}
+from{opacity:0.7;}
+to{opacity:1;}
 }
 
 /* 🔥 CONTENT BOX */
 .content-box{
-  background:#fff;
-  margin:15px auto;
-  padding:15px;
-  border-radius:12px;
-  font-size:14px;
-  line-height:1.6;
-  max-width:700px;
-  box-shadow:0 4px 12px rgba(0,0,0,0.05);
+background:#fff;
+margin:15px auto;
+padding:15px;
+border-radius:12px;
+font-size:14px;
+line-height:1.6;
+max-width:700px;
+box-shadow:0 4px 12px rgba(0,0,0,0.05);
 }
 
 /* TEXT */
 .content-box p{
-  color:#444;
-  line-height:1.7;
+color:#444;
+line-height:1.7;
 }
 
 /* HIGHLIGHT */
 .content-box .highlight{
-  color:#2e7d32;
-  font-weight:700;
-  background:rgba(46,125,50,0.08);
-  padding:8px 10px;
-  border-radius:6px;
-  margin-bottom:8px;
+color:#2e7d32;
+font-weight:700;
+background:rgba(46,125,50,0.08);
+padding:8px 10px;
+border-radius:6px;
+margin-bottom:8px;
 }
 
 /* HEADINGS */
 .content-box h2{
-  color:#111;
-  margin-bottom:8px;
+color:#111;
+margin-bottom:8px;
 }
 
 /* DARK MODE CONTENT */
 body.dark .content-box{
-  background:#1e1e1e;
+background:#1e1e1e;
 }
 
 body.dark .content-box p{
-  color:#bbb;
+color:#bbb;
 }
 
 body.dark .content-box .highlight{
-  color:#66bb6a;
+color:#66bb6a;
 }
 
 body.dark .content-box h2{
-  color:#fff;
+color:#fff;
 }
 
 /* 🔥 LIST */
 .category-row{
-  display:flex;
-  flex-direction:column;
-  gap:14px;
-  padding:10px;
+display:flex;
+flex-direction:column;
+gap:14px;
+padding:10px;
 }
 
 /* 🔥 CARD */
 .card{
-  background:#fff;
-  border-radius:16px;
-  padding:45px 14px 14px;
-  box-shadow:0 6px 18px rgba(0,0,0,0.08);
-  transition:0.25s ease;
-  margin-bottom:10px;
+background:#fff;
+border-radius:16px;
+padding:45px 14px 14px;
+box-shadow:0 6px 18px rgba(0,0,0,0.08);
+transition:0.25s ease;
+margin-bottom:10px;
 
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  text-align:center;
+display:flex;
+flex-direction:column;
+align-items:center;
+text-align:center;
 
-  position:relative;
-  overflow:hidden;
+position:relative;
+overflow:hidden;
 }
 
 body.dark .card{
-  background:#1e1e1e;
+background:#1e1e1e;
 }
 
 .card:hover{
-  transform:translateY(-2px);
+transform:translateY(-2px);
+}
+
+/* ✅ FIX: background overlay should NOT block clicks /
+.top1::before{
+content:"";
+position:absolute;
+inset:0;
+background:
+linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.25)),
+url("https://raw.githubusercontent.com/vasu-h10/trending-phones-1/main/celebration.gif");
+background-size:cover;
+opacity:0.35;
+z-index:0;
+pointer-events:none; / 🔥 IMPORTANT FIX */
 }
 
 /* IMAGE */
 .card img{
-  width:80%;
-  max-width:200px;
-  height:auto;
-  object-fit:contain;
-  margin-bottom:10px;
+width:80%;
+max-width:200px;
+height:auto;
+object-fit:contain;
+margin-bottom:10px;
+position:relative;
+z-index:2;
 }
 
 /* CONTENT */
 .card-content{
-  width:100%;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:6px;
+width:100%;
+display:flex;
+flex-direction:column;
+align-items:center;
+gap:6px;
+position:relative;
+z-index:2;
 }
 
 /* TITLE */
 .card-content h3{
-  font-size:16px;
-  margin:5px 0;
-  color:#111;
+font-size:16px;
+margin:5px 0;
+color:#111;
 }
 
 body.dark .card-content h3{
-  color:#fff;
+color:#fff;
 }
 
-/* 🔥 SPECS (NEW 🔥) */
+/* SPECS */
 .specs{
-  display:flex;
-  flex-wrap:wrap;
-  justify-content:center;
-  gap:6px;
-  margin:6px 0;
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:6px;
+margin:6px 0;
 }
 
 .specs span{
-  font-size:12px;
-  background:#e8f5e9;
-  color:#2e7d32;
-  padding:4px 8px;
-  border-radius:20px;
-  font-weight:500;
+font-size:12px;
+background:#e8f5e9;
+color:#2e7d32;
+padding:4px 8px;
+border-radius:20px;
 }
 
 body.dark .specs span{
-  background:#333;
-  color:#66bb6a;
+background:#333;
+color:#66bb6a;
 }
 
 /* BADGE */
 .top-badge{
-  position:absolute;
-  top:6px;
-  left:6px;
-  font-size:42px;
-  filter:drop-shadow(0 4px 6px rgba(0,0,0,0.3));
+position:absolute;
+top:6px;
+left:6px;
+font-size:42px;
+z-index:3;
 }
 
 /* 🥇 TOP 1 */
 .top1{
-  border:2px solid gold;
-  box-shadow:
-    0 8px 25px rgba(255,215,0,0.4),
-    0 0 12px rgba(255,215,0,0.6);
+border:2px solid gold;
 }
 
-.top1::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:
-    linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.25)),
-    url("https://raw.githubusercontent.com/vasu-h10/trending-phones-1/main/celebration.gif");
-  background-size:cover;
-  opacity:0.35;
-  z-index:0;
-}
-
-/* 🥈🥉 */
-.top2, .top3{
-  border:2px solid #ddd;
-}
-
-/* BUTTON */
+/* BUTTON (FIXED) /
 .buy-btn{
-  background:linear-gradient(90deg,#ff7a00,#ff3d00);
-  border:none;
-  padding:12px 18px;
-  border-radius:25px;
-  color:white;
-  font-size:14px;
-  font-weight:bold;
-  cursor:pointer;
-  margin-top:8px;
+background:linear-gradient(90deg,#ff7a00,#ff3d00);
+border:none;
+padding:12px 18px;
+border-radius:25px;
+color:white;
+font-size:14px;
+font-weight:bold;
+cursor:pointer;
+margin-top:8px;
+position:relative;
+z-index:5; / 🔥 MUST BE ABOVE ALL */
 }
 
 .buy-btn:hover{
-  opacity:0.9;
-  transform:scale(1.05);
-}
-
-/* GOOGLE AD */
-.google-ad{
-  margin:15px 10px;
-  padding:10px;
-  background:#fff;
-  border-radius:12px;
-  text-align:center;
-  min-height:0;
-}
-
-.google-ad:empty{
-  display:none;
-}
-
-body.dark .google-ad{
-  background:#1e1e1e;
-}
-
-/* FOOTER */
-.app-footer{
-  background:#fff;
-  margin-top:40px;
-  padding:20px;
-  text-align:center;
-  border-top:1px solid #ddd;
-}
-
-body.dark .app-footer{
-  background:#1e1e1e;
-}
-
-.footer-links{
-  display:flex;
-  justify-content:center;
-  gap:15px;
-  flex-wrap:wrap;
-}
-
-.footer-links a{
-  color:#0f9d58;
-  text-decoration:none;
-  font-size:14px;
-  font-weight:500;
-}
-
-.footer-links a:hover{
-  text-decoration:underline;
-}
-
-.footer-copy{
-  font-size:12px;
-  margin-top:10px;
-  color:#777;
-}
-
-body.dark .footer-copy{
-  color:#aaa;
-}
-
-.note{
-  font-size:11px;
-  color:#777;
-  margin-top:4px;
-}
-
-body.dark .note{
-  color:#aaa;
-}
-
-.category-title{
-  font-size:18px;
-  font-weight:bold;
-  text-align:center;
-  margin:10px 0;
-  color:#111;
-}
-
-body.dark .category-title{
-  color:#fff;
+opacity:0.9;
+transform:scale(1.05);
 }
