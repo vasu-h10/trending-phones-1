@@ -37,7 +37,7 @@ crossorigin="anonymous"></script></head><body><!-- 🔥 BANNER --><div class="ma
     We compare specifications like processor performance, display quality, battery life,
     and camera capabilities to ensure the best value for money.
   </p>
-</div><!-- 🔥 NEW APPROVAL CONTENT --><div class="content-box">
+</div><!-- NEW APPROVAL CONTENT --><div class="content-box">
   <h2>Latest Smartphone Trends 2026</h2>  <p>
     Smartphone technology is evolving rapidly with advanced processors, AI-powered cameras,
     and improved battery efficiency.
@@ -53,7 +53,8 @@ crossorigin="anonymous"></script></head><body><!-- 🔥 BANNER --><div class="ma
   </p>  <p>
     Our platform focuses on providing honest and updated information to help users make better buying decisions.
   </p>
-</div><!-- FOOTER --><footer class="app-footer">  <div class="footer-links">
+</div><!-- FOOTER --><footer class="app-footer">
+  <div class="footer-links">
     <a href="/privacy.html">Privacy Policy</a>
     <a href="/terms.html">Terms & Conditions</a>
     <a href="/about.html">About Us</a>
@@ -63,13 +64,12 @@ crossorigin="anonymous"></script></head><body><!-- 🔥 BANNER --><div class="ma
     <a href="/copyright.html">Copyright</a>
   </div>  <div class="footer-copy">
     © 2026 Trending Phones Deals. All rights reserved.
-  </div></footer><script src="/app.js" defer></script><!-- SERVICE WORKER --><script>
+  </div>
+</footer><script src="/app.js" defer></script><!-- ✅ FIXED SERVICE WORKER --><script>
 if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/sw.js')
-      .then(() => console.log('Service Worker Registered'))
-      .catch(err => console.log('SW error:', err));
-  });
+  navigator.serviceWorker.register('/sw.js')
+    .then(reg => console.log('SW Registered:', reg))
+    .catch(err => console.log('SW Error:', err));
 }
 </script></body>
 </html>
