@@ -1,4 +1,4 @@
-const CACHE_NAME = "top10-phones-v6";
+const CACHE_NAME = "top10-phones-final-v1";
 
 const FILES_TO_CACHE = [
   "/",
@@ -35,16 +35,19 @@ self.addEventListener("activate", event => {
   self.clients.claim();
 });
 
-/* FETCH */
+/* FETCH (OFFLINE-FIRST) */
 self.addEventListener("fetch", event => {
   event.respondWith(
-    fetch(event.request)
+    caches.match(event.request)
       .then(response => {
-        return caches.open(CACHE_NAME).then(cache => {
-          cache.put(event.request, response.clone());
-          return response;
-        });
+        return response || fetch(event.request)
+          .then(networkRes => {
+            return caches.open(CACHE_NAME).then(cache => {
+              cache.put(event.request, networkRes.clone());
+              return networkRes;
+            });
+          })
+          .catch(() => caches.match("/index.html"));
       })
-      .catch(() => caches.match(event.request))
   );
 });
